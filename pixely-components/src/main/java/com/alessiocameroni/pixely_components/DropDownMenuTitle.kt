@@ -9,12 +9,12 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PixelyDropdownMenuTitle(
-    text: String
+    stringTitle: String
 ) {
     Text(
         modifier = Modifier
             .padding(horizontal = 12.dp, vertical = 8.dp),
-        text = text,
+        text = stringTitle,
         style = MaterialTheme.typography.labelLarge
     )
 }

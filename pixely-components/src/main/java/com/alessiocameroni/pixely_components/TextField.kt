@@ -17,19 +17,19 @@ import androidx.compose.ui.text.input.ImeAction
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PixelyTextField (
-    valueText: String,
-    placeHolderString: String,
+    stringText: String,
+    stringPlaceHolder: String,
     clearTrailingIcon: Painter,
     descriptionTrailingIcon: String,
     onSearch: (KeyboardActionScope.() -> Unit)?
 ) {
-    var text by rememberSaveable { mutableStateOf(valueText) }
+    var text by rememberSaveable { mutableStateOf(stringText) }
 
     TextField(
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        placeholder = { Text(text = placeHolderString) },
+        placeholder = { Text(text = stringPlaceHolder) },
         textStyle = MaterialTheme.typography.titleMedium,
         singleLine = true,
         trailingIcon = {
