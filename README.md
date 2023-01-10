@@ -37,5 +37,8 @@ dependencies {
 }
 ```
 
+# Documentation
+The documentation of each component can be found in [this repository wiki](https://github.com/alessiocameroni/pixely-components/wiki).
+
 # Contribute
 Any kind of contribution is more than welcome, it would be awesome to expand this library with more components down the line.
