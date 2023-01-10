@@ -36,3 +36,6 @@ dependencies {
     implementation 'com.github.alessiocameroni:pixely-components:1.0.1'
 }
 ```
+
+# Contribute
+Any kind of contribution is more than welcome, it would be awesome to expand this library with more components down the line.
