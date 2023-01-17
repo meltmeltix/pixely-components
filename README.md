@@ -1,6 +1,6 @@
-[![](https://jitpack.io/v/alessiocameroni/pixely-components.svg)](https://jitpack.io/#alessiocameroni/pixely-components)
-![](https://img.shields.io/badge/Jetpack%20Compose-1.3.2-blue)
-![](https://img.shields.io/badge/material3-1.1.0--alpha03-blueviolet)
+[![](https://jitpack.io/v/alessiocameroni/pixely-components.svg?style=for-the-badge&logo=appveyor)](https://jitpack.io/#alessiocameroni/pixely-components)
+![](https://img.shields.io/badge/Jetpack%20Compose-1.3.2-blue?style=for-the-badge)
+![](https://img.shields.io/badge/material3-1.1.0--alpha03-blueviolet?style=for-the-badge&logo=appveyor)
 
 
 ![Pixely Components](/github/TitleBanner.svg)
