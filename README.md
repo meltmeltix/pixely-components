@@ -1,5 +1,6 @@
+[![](https://img.shields.io/badge/Jitpack-1.0.1-green?style=for-the-badge)](https://jitpack.io/#alessiocameroni/pixely-components)
 ![](https://img.shields.io/badge/Jetpack%20Compose-1.3.2-blue?style=for-the-badge)
-![](https://img.shields.io/badge/material3-1.1.0--alpha03-blueviolet?style=for-the-badge&logo=appveyor)
+![](https://img.shields.io/badge/material3-1.1.0--alpha03-blueviolet?style=for-the-badge)
 
 
 ![Pixely Components](/github/TitleBanner.svg)
