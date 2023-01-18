@@ -1,6 +1,6 @@
-[![](https://jitpack.io/v/alessiocameroni/pixely-components.svg)](https://jitpack.io/#alessiocameroni/pixely-components)
-![](https://img.shields.io/badge/Jetpack%20Compose-1.3.2-blue)
-![](https://img.shields.io/badge/material3-1.1.0--alpha03-blueviolet)
+[![](https://img.shields.io/badge/Jitpack-1.0.1-green?style=for-the-badge)](https://jitpack.io/#alessiocameroni/pixely-components)
+![](https://img.shields.io/badge/Jetpack%20Compose-1.3.2-blue?style=for-the-badge)
+![](https://img.shields.io/badge/material3-1.1.0--alpha03-blueviolet?style=for-the-badge)
 
 
 ![Pixely Components](/github/TitleBanner.svg)
@@ -10,6 +10,7 @@ Pixely Components is a simple library containing a bunch of JetPack Compose comp
 # About
 The main purpose of this library is to simply compansate and add useful components to the Material3 library by Google, as some of the components already available in that library can look and/or feel outdated, or are straight up missing.
 This library is a personal project meant to help my workflow, saving file and code clutter in projects, while keeping everything in a single place and making each components reusable in other projects.
+All the components listed are currently used in other personal apps, such as [Revo Music Player](https://github.com/alessiocameroni/RevoMusicPlayer).
 
 ## Features
 - Easy to use components
