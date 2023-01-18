@@ -1,4 +1,4 @@
-[![](https://img.shields.io/badge/Jitpack-1.1.0-green?style=for-the-badge)](https://jitpack.io/#alessiocameroni/pixely-components)
+[![](https://img.shields.io/badge/Jitpack-1.2.0-green?style=for-the-badge)](https://jitpack.io/#alessiocameroni/pixely-components)
 ![](https://img.shields.io/badge/Jetpack%20Compose-1.4.0--alpha04-blue?style=for-the-badge)
 ![](https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge)
 
@@ -34,7 +34,7 @@ repositories {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.alessiocameroni:pixely-components:1.1.1'
+    implementation 'com.github.alessiocameroni:pixely-components:1.2.0'
 }
 ```
 
