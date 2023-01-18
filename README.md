@@ -34,7 +34,7 @@ repositories {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.alessiocameroni:pixely-components:1.1.0'
+    implementation 'com.github.alessiocameroni:pixely-components:1.1.1'
 }
 ```
 
