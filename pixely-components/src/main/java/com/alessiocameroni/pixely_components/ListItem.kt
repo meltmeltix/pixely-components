@@ -61,13 +61,15 @@ fun PixelyListItem(
                     modifier = Modifier
                         .padding(vertical = 10.dp)
                         .padding(start = 5.dp)
-                        .size(60.dp),
+                        .defaultMinSize(minWidth = 60.dp)
+                        .height(60.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     trailingUnit()
                 }
             }
-        } else if (leadingUnit != null) {
+        }
+        else if (leadingUnit != null) {
             // Only Heading unit
             Row(
                 modifier = modifier
@@ -105,7 +107,8 @@ fun PixelyListItem(
                     )
                 }
             }
-        } else if (trailingUnit != null) {
+        }
+        else if (trailingUnit != null) {
             // Only Trailing unit
             Row(
                 modifier = modifier
@@ -137,13 +140,15 @@ fun PixelyListItem(
                     modifier = Modifier
                         .padding(vertical = 10.dp)
                         .padding(start = 5.dp)
-                        .size(60.dp),
+                        .defaultMinSize(minWidth = 60.dp)
+                        .height(60.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     trailingUnit()
                 }
             }
-        } else {
+        }
+        else {
             // Only Headline and Supporting text
             Row(
                 modifier = modifier
@@ -208,13 +213,15 @@ fun PixelyListItem(
                 Box(
                     modifier = Modifier
                         .padding(start = 5.dp)
-                        .size(60.dp),
+                        .defaultMinSize(minWidth = 60.dp)
+                        .height(60.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     trailingUnit()
                 }
             }
-        } else if (leadingUnit != null) {
+        }
+        else if (leadingUnit != null) {
             // Only Heading unit
             Row(
                 modifier = modifier
@@ -246,7 +253,8 @@ fun PixelyListItem(
                     )
                 }
             }
-        } else if (trailingUnit != null) {
+        }
+        else if (trailingUnit != null) {
             // Only Trailing unit
             Row(
                 modifier = modifier
@@ -256,6 +264,7 @@ fun PixelyListItem(
             ) {
                 Column(
                     modifier = Modifier
+                        .padding(start = 20.dp)
                         .weight(1f)
                         .height(60.dp),
                     verticalArrangement = Arrangement.Center
@@ -270,16 +279,17 @@ fun PixelyListItem(
 
                 Box(
                     modifier = Modifier
-                        .padding(vertical = 10.dp)
                         .padding(start = 5.dp)
-                        .size(60.dp),
+                        .defaultMinSize(minWidth = 60.dp)
+                        .height(60.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     trailingUnit()
                 }
             }
-        } else {
-            // Only Headline and Supporting text
+        }
+        else {
+            // Only Headline Text
             Row(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
