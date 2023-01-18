@@ -17,25 +17,26 @@ fun PixelyListItem(
     leadingUnit: @Composable (() -> Unit?)? = null,
     trailingUnit: @Composable (() -> Unit?)? = null
 ) {
-    Row(
-        modifier = modifier
-            .padding(horizontal = 5.dp)
-            .fillMaxWidth()
-            .defaultMinSize(minHeight = 80.dp),
-    ) {
-        if (leadingUnit != null && trailingUnit != null) {
-            // Both Units and Text
-            Box(
-                modifier = Modifier
-                    .padding(vertical = 10.dp)
-                    .padding(end = 5.dp)
-                    .size(60.dp),
-                contentAlignment = Alignment.Center
+    if(stringSupportingText != null) {
+        // Both Headline and Supporting text
+        if(leadingUnit != null && trailingUnit != null) {
+            // Both Heading and Trailing units
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 80.dp)
             ) {
-                leadingUnit()
-            }
+                Box(
+                    modifier = Modifier
+                        .padding(vertical = 10.dp)
+                        .padding(end = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    leadingUnit()
+                }
 
-            if (stringSupportingText != null) {
                 Column(
                     modifier = Modifier
                         .padding(top = 16.dp, bottom = 14.dp)
@@ -55,45 +56,35 @@ fun PixelyListItem(
                         fontSize = 14.sp
                     )
                 }
-            } else {
-                Column(
+
+                Box(
                     modifier = Modifier
-                        .weight(1f)
-                        .height(80.dp),
-                    verticalArrangement = Arrangement.Center
+                        .padding(vertical = 10.dp)
+                        .padding(start = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = stringHeadlineText,
-                        style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
-                    )
+                    trailingUnit()
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .padding(vertical = 10.dp)
-                    .padding(start = 5.dp)
-                    .size(60.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                trailingUnit()
-            }
-
         } else if (leadingUnit != null) {
-            // Leading Unit and Text
-            Box(
-                modifier = Modifier
-                    .padding(vertical = 10.dp)
-                    .padding(end = 5.dp)
-                    .size(60.dp),
-                contentAlignment = Alignment.Center
+            // Only Heading unit
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 80.dp)
             ) {
-                leadingUnit()
-            }
+                Box(
+                    modifier = Modifier
+                        .padding(vertical = 10.dp)
+                        .padding(end = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    leadingUnit()
+                }
 
-            if (stringSupportingText != null) {
                 Column(
                     modifier = Modifier
                         .padding(top = 16.dp, end = 20.dp, bottom = 14.dp)
@@ -113,26 +104,15 @@ fun PixelyListItem(
                         fontSize = 14.sp
                     )
                 }
-            } else {
-                Column(
-                    modifier = Modifier
-                        .padding(end = 20.dp)
-                        .weight(1f)
-                        .height(80.dp),
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = stringHeadlineText,
-                        style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
-                    )
-                }
             }
-
-        } else if(trailingUnit != null) {
-            // Trailing Unit and Text
-            if (stringSupportingText != null) {
+        } else if (trailingUnit != null) {
+            // Only Trailing unit
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 80.dp)
+            ) {
                 Column(
                     modifier = Modifier
                         .padding(top = 16.dp, start = 20.dp, bottom = 14.dp)
@@ -152,36 +132,25 @@ fun PixelyListItem(
                         fontSize = 14.sp
                     )
                 }
-            } else {
-                Column(
+
+                Box(
                     modifier = Modifier
-                        .padding(start = 20.dp)
-                        .weight(1f)
-                        .height(80.dp),
-                    verticalArrangement = Arrangement.Center
+                        .padding(vertical = 10.dp)
+                        .padding(start = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
-                        text = stringHeadlineText,
-                        style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
-                    )
+                    trailingUnit()
                 }
             }
-
-            Box(
-                modifier = Modifier
-                    .padding(vertical = 10.dp)
-                    .padding(start = 5.dp)
-                    .size(60.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                trailingUnit()
-            }
-
         } else {
-            // Only Text
-            if (stringSupportingText != null) {
+            // Only Headline and Supporting text
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 80.dp)
+            ) {
                 Column(
                     modifier = Modifier
                         .padding(horizontal = 20.dp, vertical = 15.dp)
@@ -201,12 +170,127 @@ fun PixelyListItem(
                         fontSize = 14.sp
                     )
                 }
-            } else {
+            }
+        }
+    } else {
+        // Only Headline text present
+        if(leadingUnit != null && trailingUnit != null) {
+            // Both Heading and Trailing units
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 60.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(end = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    leadingUnit()
+                }
+
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(60.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = stringHeadlineText,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontSize = 20.sp
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .padding(start = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    trailingUnit()
+                }
+            }
+        } else if (leadingUnit != null) {
+            // Only Heading unit
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 60.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .padding(end = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    leadingUnit()
+                }
+
+                Column(
+                    modifier = Modifier
+                        .padding(end = 20.dp)
+                        .weight(1f)
+                        .height(60.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = stringHeadlineText,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontSize = 20.sp
+                    )
+                }
+            }
+        } else if (trailingUnit != null) {
+            // Only Trailing unit
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 60.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(60.dp),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = stringHeadlineText,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontSize = 20.sp
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .padding(vertical = 10.dp)
+                        .padding(start = 5.dp)
+                        .size(60.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    trailingUnit()
+                }
+            }
+        } else {
+            // Only Headline and Supporting text
+            Row(
+                modifier = modifier
+                    .padding(horizontal = 5.dp)
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = 60.dp)
+            ) {
                 Column(
                     modifier = Modifier
                         .padding(horizontal = 20.dp)
                         .weight(1f)
-                        .height(80.dp),
+                        .height(60.dp),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
