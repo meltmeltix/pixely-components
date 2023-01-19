@@ -16,6 +16,8 @@
 	<a><img src="https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge"></a>
 </p>
 
+<br>
+
 <p align="center">
 Pixely Components is a simple library containing a bunch of JetPack Compose components that aims to replicate different Android's system app components.
 </p>
