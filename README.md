@@ -1,5 +1,6 @@
 <h3 align="center">
     <img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/Logo.png" width="120" alt="Logo">
+	<br/>
     Pixely Components
 </h3>
 
@@ -8,9 +9,12 @@
 </p>
 
 <p align="center">
-	<a href="https://jitpack.io/#alessiocameroni/pixely-components"><img src="https://img.shields.io/badge/Jitpack-1.2.0-green?style=for-the-badge"></a>	<a>	<img src="https://img.shields.io/badge/Jetpack%20Compose-1.4.0--alpha04-blue?style=for-the-badge"></a> 	<a>	<img src="https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge"></a>
+	<a href="https://jitpack.io/#alessiocameroni/pixely-components">
+		<img src="https://img.shields.io/badge/Jitpack-1.2.0-green?style=for-the-badge">
+	</a>
+	<a><img src="https://img.shields.io/badge/Jetpack%20Compose-1.4.0--alpha04-blue?style=for-the-badge"></a>
+	<a><img src="https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge"></a>
 </p>
-
 
 <p align="center">
 Pixely Components is a simple library containing a bunch of JetPack Compose components that aims to replicate different Android's system app components.
