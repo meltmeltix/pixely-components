@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge)
 
 
-![Pixely Components](/github/TitleBanner.svg)
+![Pixely Components](/github/Main/TitleBanner.svg)
 
 Pixely Components is a simple library containing a bunch of JetPack Compose components that aims to replicate different Android's system app components.
 
