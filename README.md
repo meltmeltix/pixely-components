@@ -1,25 +1,37 @@
-[![](https://img.shields.io/badge/Jitpack-1.2.0-green?style=for-the-badge)](https://jitpack.io/#alessiocameroni/pixely-components)
-![](https://img.shields.io/badge/Jetpack%20Compose-1.4.0--alpha04-blue?style=for-the-badge)
-![](https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge)
+<h3 align="center">
+    <img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/Logo.png" width="120" alt="Logo">
+    Pixely Components
+</h3>
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/Divider.png" height="15"  alt="Divider">
+</p>
+
+<p align="center">
+	<a href="https://jitpack.io/#alessiocameroni/pixely-components"><img src="https://img.shields.io/badge/Jitpack-1.2.0-green?style=for-the-badge"></a>	<a>	<img src="https://img.shields.io/badge/Jetpack%20Compose-1.4.0--alpha04-blue?style=for-the-badge"></a> 	<a>	<img src="https://img.shields.io/badge/material3-1.1.0--alpha04-blueviolet?style=for-the-badge"></a>
+</p>
 
 
-![Pixely Components](/github/Main/TitleBanner.svg)
-
+<p align="center">
 Pixely Components is a simple library containing a bunch of JetPack Compose components that aims to replicate different Android's system app components.
+</p>
 
-# About
-The main purpose of this library is to simply compansate and add useful components to the Material3 library by Google, as some of the components already available in that library can look and/or feel outdated, or are straight up missing.
+
+## 🤔 About
+The main purpose of this library is to simply compansate and add useful components to the `Material3` library by Google, as some of the components already available in that library can look and/or feel outdated, or are straight up missing.
 This library is a personal project meant to help my workflow, saving file and code clutter in projects, while keeping everything in a single place and making each components reusable in other projects.
 All the components listed are currently used in other personal apps, such as [Revo Music Player](https://github.com/alessiocameroni/RevoMusicPlayer).
 
-## Features
-- Easy to use components
-- Material3 support (wow!)
-- API 24 minimum
+<br>
+
+## ⚙️Information
+- **Simple**: each components is crafted to be as simple as possible to set up and re-use, with a clean and straight-forward source code for beginners.
+- **Material You**: each component is based off of AOSP Android 13 system apps and Google apps, all supporting `Material3` dynamic colors.
+- **Minimum API is 24**
 
 <br>
 
-# How to install and use
+## 🚀 How to install and use
 1. Add the JitPack repository to your `settings.gradle` file
 
 ```gradle
@@ -38,8 +50,21 @@ dependencies {
 }
 ```
 
-# Documentation
-The documentation of each component can be found in [this repository wiki](https://github.com/alessiocameroni/pixely-components/wiki).
+<br>
 
-# Contribute
+## 📖 Documentation
+The documentation of each component can be found in [this repository wiki](https://github.com/alessiocameroni/pixely-components/wiki). Each page is written as straight forward as possible, showing both each function's information and practical examples. 
+
+<br>
+
+## 🤝 Contribute
 Any kind of contribution is more than welcome, it would be awesome to expand this library with more components down the line.
+
+## 📜 License
+Pixely Components is released under the MIT license, which grants the following permissions:
+- Commercial use
+- Distribution
+- Modification
+- Private use
+
+For more convoluted language, see the [LICENSE](https://github.com/alessiocameroni/pixely-components/blob/master/LICENSE).
