@@ -12,6 +12,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "PixelyComponentsLib"
+rootProject.name = "PixelyComponentsLibrary"
 include ':app'
 include ':pixely-components'
