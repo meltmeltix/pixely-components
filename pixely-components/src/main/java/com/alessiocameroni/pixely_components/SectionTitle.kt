@@ -21,7 +21,7 @@ fun PixelySectionTitle(
     ) {
         Text(
             modifier = Modifier
-                .padding(25.dp, 25.dp, 25.dp, 0.dp)
+                .padding(25.dp, 25.dp, 25.dp, 5.dp)
                 .fillMaxWidth(),
             color = MaterialTheme.colorScheme.primary,
             text = stringTitle,
