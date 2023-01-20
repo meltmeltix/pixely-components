@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -25,11 +26,11 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 80.dp)
+                    .defaultMinSize(minHeight = 80.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
                     modifier = Modifier
-                        .padding(vertical = 10.dp)
                         .padding(end = 5.dp)
                         .size(60.dp),
                     contentAlignment = Alignment.Center
@@ -46,7 +47,9 @@ fun PixelyListItem(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
 
                     Text(
@@ -59,7 +62,6 @@ fun PixelyListItem(
 
                 Box(
                     modifier = Modifier
-                        .padding(vertical = 10.dp)
                         .padding(start = 5.dp)
                         .defaultMinSize(minWidth = 60.dp)
                         .height(60.dp),
@@ -75,11 +77,11 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 80.dp)
+                    .defaultMinSize(minHeight = 80.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
                     modifier = Modifier
-                        .padding(vertical = 10.dp)
                         .padding(end = 5.dp)
                         .size(60.dp),
                     contentAlignment = Alignment.Center
@@ -96,7 +98,9 @@ fun PixelyListItem(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
 
                     Text(
@@ -114,7 +118,8 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 80.dp)
+                    .defaultMinSize(minHeight = 80.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
                     modifier = Modifier
@@ -125,7 +130,9 @@ fun PixelyListItem(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
 
                     Text(
@@ -138,7 +145,6 @@ fun PixelyListItem(
 
                 Box(
                     modifier = Modifier
-                        .padding(vertical = 10.dp)
                         .padding(start = 5.dp)
                         .defaultMinSize(minWidth = 60.dp)
                         .height(60.dp),
@@ -154,7 +160,8 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 80.dp)
+                    .defaultMinSize(minHeight = 80.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
                     modifier = Modifier
@@ -165,7 +172,9 @@ fun PixelyListItem(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
 
                     Text(
@@ -185,7 +194,8 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 60.dp)
+                    .defaultMinSize(minHeight = 60.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
                     modifier = Modifier
@@ -198,15 +208,17 @@ fun PixelyListItem(
 
                 Column(
                     modifier = Modifier
-                        .weight(1f)
-                        .height(60.dp),
+                        .padding(top = 16.dp, bottom = 14.dp)
+                        .weight(1f),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
 
@@ -227,7 +239,8 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 60.dp)
+                    .defaultMinSize(minHeight = 60.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
                     modifier = Modifier
@@ -240,16 +253,18 @@ fun PixelyListItem(
 
                 Column(
                     modifier = Modifier
+                        .padding(top = 16.dp, bottom = 14.dp)
                         .padding(end = 20.dp)
-                        .weight(1f)
-                        .height(60.dp),
+                        .weight(1f),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }
@@ -260,20 +275,23 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 60.dp)
+                    .defaultMinSize(minHeight = 60.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
                     modifier = Modifier
+                        .padding(top = 16.dp, bottom = 14.dp)
                         .padding(start = 20.dp)
-                        .weight(1f)
-                        .height(60.dp),
+                        .weight(1f),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
 
@@ -294,20 +312,23 @@ fun PixelyListItem(
                 modifier = modifier
                     .padding(horizontal = 5.dp)
                     .fillMaxWidth()
-                    .defaultMinSize(minHeight = 60.dp)
+                    .defaultMinSize(minHeight = 60.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(
                     modifier = Modifier
+                        .padding(top = 16.dp, bottom = 14.dp)
                         .padding(horizontal = 20.dp)
-                        .weight(1f)
-                        .height(60.dp),
+                        .weight(1f),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringHeadlineText,
                         style = MaterialTheme.typography.titleLarge,
-                        fontSize = 20.sp
+                        fontSize = 20.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }

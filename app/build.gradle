@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.alessiocameroni.pixelycomponentslib'
+    namespace 'com.alessiocameroni.pixelycomponentslibrary'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.alessiocameroni.pixelycomponentslib"
+        applicationId 'com.alessiocameroni.pixelycomponentslibrary'
         minSdk 24
         targetSdk 33
         versionCode 1

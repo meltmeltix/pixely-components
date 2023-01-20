@@ -1,4 +1,4 @@
-package com.alessiocameroni.pixelycomponentslib
+package com.alessiocameroni.pixelycomponentslibrary
 
 import org.junit.Test
 
