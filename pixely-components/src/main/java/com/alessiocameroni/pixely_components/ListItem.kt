@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.sp
  * @param maxHeadlineLines maximum lines allowed for the headline text
  * @param stringSupportingText the supporting text of the list item
  * @param maxSupportingLines maximum lines allowed for the supporting text
- * @param leadingUnit the leading unit on the left of the text
- * @param trailingUnit the trasiling unit on the right of the text
+ * @param leadingContent the leading unit on the left of the text
+ * @param trailingContent the trasiling unit on the right of the text
  */
 @Composable
 fun PixelyListItem(
@@ -36,8 +36,8 @@ fun PixelyListItem(
     maxHeadlineLines: Int = 1,
     stringSupportingText: String? = null,
     maxSupportingLines: Int = 1,
-    leadingUnit: @Composable (() -> Unit?)? = null,
-    trailingUnit: @Composable (() -> Unit?)? = null
+    leadingContent: @Composable (() -> Unit?)? = null,
+    trailingContent: @Composable (() -> Unit?)? = null
 ) {
     if (stringSupportingText != null) {
         // Headline and Supporting text
@@ -50,17 +50,11 @@ fun PixelyListItem(
             maxHeadlineLines = maxHeadlineLines,
             maxSupportingLines = maxSupportingLines
         ) {
-            if (leadingUnit != null && trailingUnit != null) {
+            if (leadingContent != null && trailingContent != null) {
                 // Leading and Trailing units
-                Box(
-                    modifier = Modifier
-                        .padding(end = PixelyListItemDefaults.HorizontalMinPadding)
-                        .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
-                        .size(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    leadingUnit()
-                }
+                LeadingUnit (
+                    leadingContent = { leadingContent() }
+                )
 
                 Column(modifier = Modifier.weight(1f)) {
                     HeadlineText(
@@ -75,28 +69,15 @@ fun PixelyListItem(
                     )
                 }
 
-                Box(
-                    modifier = Modifier
-                        .padding(start = PixelyListItemDefaults.HorizontalMinPadding)
-                        .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
-                        .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
-                        .height(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    trailingUnit()
-                }
+                TrailingUnit (
+                    trailingContent = { trailingContent() }
+                )
             }
-            else if (leadingUnit != null) {
+            else if (leadingContent != null) {
                 // Only Leading unit
-                Box(
-                    modifier = Modifier
-                        .padding(end = PixelyListItemDefaults.HorizontalMinPadding)
-                        .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
-                        .size(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    leadingUnit()
-                }
+                LeadingUnit (
+                    leadingContent = { leadingContent() }
+                )
 
                 Column(
                     modifier = Modifier
@@ -115,7 +96,7 @@ fun PixelyListItem(
                     )
                 }
             }
-            else if (trailingUnit != null) {
+            else if (trailingContent != null) {
                 // Only Trailing unit
                 Column(
                     modifier = Modifier
@@ -134,16 +115,9 @@ fun PixelyListItem(
                     )
                 }
 
-                Box(
-                    modifier = Modifier
-                        .padding(start = PixelyListItemDefaults.HorizontalMinPadding)
-                        .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
-                        .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
-                        .height(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    trailingUnit()
-                }
+                TrailingUnit (
+                    trailingContent = { trailingContent() }
+                )
             }
             else {
                 // Only text
@@ -178,16 +152,11 @@ fun PixelyListItem(
             maxHeadlineLines = maxHeadlineLines,
             maxSupportingLines = maxSupportingLines
         ) {
-            if (leadingUnit != null && trailingUnit != null) {
+            if (leadingContent != null && trailingContent != null) {
                 // Leading and Trailing units
-                Box(
-                    modifier = Modifier
-                        .padding(end = PixelyListItemDefaults.HorizontalMinPadding)
-                        .size(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    leadingUnit()
-                }
+                LeadingUnit (
+                    leadingContent = { leadingContent() }
+                )
 
                 Column(modifier = Modifier.weight(1f)) {
                     HeadlineText(
@@ -197,26 +166,15 @@ fun PixelyListItem(
                     )
                 }
 
-                Box(
-                    modifier = Modifier
-                        .padding(start = PixelyListItemDefaults.HorizontalMinPadding)
-                        .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
-                        .height(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    trailingUnit()
-                }
+                TrailingUnit (
+                    trailingContent = { trailingContent() }
+                )
             }
-            else if (leadingUnit != null) {
+            else if (leadingContent != null) {
                 // Only Leading unit
-                Box(
-                    modifier = Modifier
-                        .padding(end = PixelyListItemDefaults.HorizontalMinPadding)
-                        .size(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    leadingUnit()
-                }
+                LeadingUnit (
+                    leadingContent = { leadingContent() }
+                )
 
                 Column(
                     modifier = Modifier
@@ -230,7 +188,7 @@ fun PixelyListItem(
                     )
                 }
             }
-            else if (trailingUnit != null) {
+            else if (trailingContent != null) {
                 // Only Trailing unit
                 Column(
                     modifier = Modifier
@@ -245,15 +203,9 @@ fun PixelyListItem(
                     )
                 }
 
-                Box(
-                    modifier = Modifier
-                        .padding(start = PixelyListItemDefaults.HorizontalMinPadding)
-                        .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
-                        .height(PixelyListItemDefaults.UnitSize),
-                    contentAlignment = Alignment.Center
-                ) {
-                    trailingUnit()
-                }
+                TrailingUnit (
+                    trailingContent = { trailingContent() }
+                )
             }
             else {
                 // Only text
@@ -359,6 +311,34 @@ private fun SupportingText (
             overflow = TextOverflow.Ellipsis
         )
     }
+}
+
+@Composable
+private fun LeadingUnit (
+    leadingContent: @Composable (() -> Unit)
+) {
+    Box(
+        modifier = Modifier
+            .padding(end = PixelyListItemDefaults.HorizontalMinPadding)
+            .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
+            .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
+            .height(PixelyListItemDefaults.UnitSize),
+        contentAlignment = Alignment.Center,
+    ) { leadingContent() }
+}
+
+@Composable
+private fun TrailingUnit (
+    trailingContent: @Composable (() -> Unit)
+) {
+    Box(
+        modifier = Modifier
+            .padding(start = PixelyListItemDefaults.HorizontalMinPadding)
+            .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
+            .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
+            .height(PixelyListItemDefaults.UnitSize),
+        contentAlignment = Alignment.Center
+    ) { trailingContent() }
 }
 
 object PixelyListItemDefaults {
