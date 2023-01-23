@@ -5,7 +5,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
@@ -18,209 +17,194 @@ import androidx.compose.ui.unit.sp
  * This is structurally similar to the Material3 ListItem component.
  * This component layout has been tweaked so that it fits Material
  * You overall style, with more spaced out elements.
- *
- * @param modifier to be applied to the list item surface
- * @param stringHeadlineText the headline text of the list item
- * @param largeHeadline toggle to make the headline large if true, medium if false
- * @param maxHeadlineLines maximum lines allowed for the headline text
- * @param stringSupportingText the supporting text of the list item
- * @param maxSupportingLines maximum lines allowed for the supporting text
- * @param leadingContent the leading unit on the left of the text
- * @param trailingContent the trailing unit on the right of the text
  */
 @Composable
 fun PixelyListItem(
     modifier: Modifier,
-    stringHeadlineText: String,
+    headlineTextString: String,
     largeHeadline: Boolean = true,
     maxHeadlineLines: Int = 1,
-    stringSupportingText: String? = null,
-    maxSupportingLines: Int = 1,
-    leadingContent: @Composable (() -> Unit?)? = null,
-    trailingContent: @Composable (() -> Unit?)? = null
+    supportingTextString: String? = null,
+    maxSupportingTextLines: Int = 1,
+    leadingContent: @Composable (() -> Unit)? = null,
+    trailingContent: @Composable (() -> Unit)? = null
 ) {
-    if (stringSupportingText != null) {
-        // Headline and Supporting text
-        ContainerListItem(
+    if (supportingTextString == null) {
+        // One-Line List Item
+        ContentContainer(
             modifier = modifier,
-            minHeight = TwoLinesMinHeight,
-            paddingValues = PaddingValues(
-                horizontal = HorizontalPadding,
-                vertical = VerticalPadding
-            ),
-            maxHeadlineLines = maxHeadlineLines,
-            maxSupportingLines = maxSupportingLines
+            containerColor = PixelyListItemDefaults.ContainerColor,
+            contentColor = PixelyListItemDefaults.ContentColor,
+            minHeight = OneLineMinHeight,
+            paddingValues = PaddingValues(horizontal = ContainerPadding)
         ) {
-            if (leadingContent != null && trailingContent != null) {
-                LeadingUnit(
-                    leadingContent = { leadingContent() }
-                )
-
+            if (leadingContent == null && trailingContent == null) {
+                // Headline Text only
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
-                        largeHeadline = largeHeadline,
-                        text = stringHeadlineText,
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = false,
+                        color = PixelyListItemDefaults.ContentColor,
                         maxLines = maxHeadlineLines
-                    )
-
-                    SupportingText(
-                        text = stringSupportingText,
-                        maxLines = maxSupportingLines
-                    )
-                }
-
-                TrailingUnit (
-                    trailingContent = { trailingContent() }
-                )
-            }
-            else if (leadingContent != null) {
-                LeadingUnit(
-                    leadingContent = { leadingContent() }
-                )
-
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
-                ) {
-                    HeadlineText(
-                        largeHeadline = largeHeadline,
-                        text = stringHeadlineText,
-                        maxLines = maxHeadlineLines
-                    )
-
-                    SupportingText(
-                        text = stringSupportingText,
-                        maxLines = maxSupportingLines
                     )
                 }
             }
-            else if (trailingContent != null) {
+            else if (trailingContent == null) {
+                // Headline Text and Leading Content only
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
-                        largeHeadline = largeHeadline,
-                        text = stringHeadlineText,
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = false,
+                        color = PixelyListItemDefaults.ContentColor,
                         maxLines = maxHeadlineLines
                     )
-
-                    SupportingText(
-                        text = stringSupportingText,
-                        maxLines = maxSupportingLines
+                }
+            }
+            else if (leadingContent == null) {
+                // Headline Text and Trailing Content only
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    HeadlineText(
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = false,
+                        color = PixelyListItemDefaults.ContentColor,
+                        maxLines = maxHeadlineLines
                     )
                 }
-
-                TrailingUnit (
-                    trailingContent = { trailingContent() }
-                )
             }
             else {
+                // Headline Text, Leading and Trailing Content
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
-                        largeHeadline = largeHeadline,
-                        text = stringHeadlineText,
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = false,
+                        color = PixelyListItemDefaults.ContentColor,
                         maxLines = maxHeadlineLines
-                    )
-
-                    SupportingText(
-                        text = stringSupportingText,
-                        maxLines = maxSupportingLines
                     )
                 }
             }
         }
     } else {
-        // Only Headline text
-        ContainerListItem(
+        // Two-Line List Item
+        ContentContainer(
             modifier = modifier,
-            minHeight = OneLineMinHeight,
-            paddingValues = PaddingValues(
-                horizontal = HorizontalPadding,
-                vertical = 0.dp
-            ),
-            maxHeadlineLines = maxHeadlineLines,
-            maxSupportingLines = maxSupportingLines
+            containerColor = PixelyListItemDefaults.ContainerColor,
+            contentColor = PixelyListItemDefaults.ContentColor,
+            minHeight = TwoLineMinHeight,
+            paddingValues = PaddingValues(ContainerPadding)
         ) {
-            if (leadingContent != null && trailingContent != null) {
-                LeadingUnit(
-                    leadingContent = { leadingContent() }
-                )
-
+            if (leadingContent == null && trailingContent == null) {
+                // Headline Text only
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
-                        largeHeadline = largeHeadline,
-                        paddingEnabled = false,
-                        text = stringHeadlineText,
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = true,
+                        color = PixelyListItemDefaults.ContentColor,
                         maxLines = maxHeadlineLines
                     )
-                }
 
-                TrailingUnit (
-                    trailingContent = { trailingContent() }
-                )
-            }
-            else if (leadingContent != null) {
-                LeadingUnit(
-                    leadingContent = { leadingContent() }
-                )
-
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
-                ) {
-                    HeadlineText(
-                        largeHeadline = largeHeadline,
-                        paddingEnabled = false,
-                        text = stringHeadlineText,
-                        maxLines = maxHeadlineLines
+                    SupportingText(
+                        text = supportingTextString,
+                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        maxLines = maxSupportingTextLines
                     )
                 }
             }
-            else if (trailingContent != null) {
+            else if (trailingContent == null) {
+                // Headline Text and Leading Content only
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
-                        largeHeadline = largeHeadline,
-                        paddingEnabled = false,
-                        text = stringHeadlineText,
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = true,
+                        color = PixelyListItemDefaults.ContentColor,
                         maxLines = maxHeadlineLines
                     )
-                }
 
-                TrailingUnit (
-                    trailingContent = { trailingContent() }
-                )
+                    SupportingText(
+                        text = supportingTextString,
+                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        maxLines = maxSupportingTextLines
+                    )
+                }
+            }
+            else if (leadingContent == null) {
+                // Headline Text and Trailing Content only
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    HeadlineText(
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = true,
+                        color = PixelyListItemDefaults.ContentColor,
+                        maxLines = maxHeadlineLines
+                    )
+
+                    SupportingText(
+                        text = supportingTextString,
+                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        maxLines = maxSupportingTextLines
+                    )
+                }
             }
             else {
+                // Headline Text, Leading and Trailing Content
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .defaultMinSize(minHeight = ColumnMinHeight)
+                        .heightIn(min = OneLineMinHeight),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
-                        largeHeadline = largeHeadline,
-                        paddingEnabled = false,
-                        text = stringHeadlineText,
+                        largeText = largeHeadline,
+                        text = headlineTextString,
+                        paddingEnabled = true,
+                        color = PixelyListItemDefaults.ContentColor,
                         maxLines = maxHeadlineLines
+                    )
+
+                    SupportingText(
+                        text = supportingTextString,
+                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        maxLines = maxSupportingTextLines
                     )
                 }
             }
@@ -229,14 +213,12 @@ fun PixelyListItem(
 }
 
 @Composable
-private fun ContainerListItem(
+private fun ContentContainer(
     modifier: Modifier,
-    containerColor: Color = PixelyListItemDefaults.ContainerColor,
-    contentColor: Color = PixelyListItemDefaults.ContentColor,
+    containerColor: Color,
+    contentColor: Color,
     minHeight: Dp,
     paddingValues: PaddingValues,
-    maxHeadlineLines: Int,
-    maxSupportingLines: Int,
     content: @Composable RowScope.() -> Unit
 ) {
     Surface(
@@ -244,54 +226,50 @@ private fun ContainerListItem(
         color = containerColor,
         contentColor = contentColor
     ) {
-        if (maxSupportingLines == 1) {
-            Row(
-                modifier = Modifier
-                    .defaultMinSize(minHeight = minHeight)
-                    .padding(paddingValues),
-                content = content,
-                verticalAlignment = Alignment.CenterVertically
-            )
-        } else {
-            Row(
-                modifier = Modifier
-                    .defaultMinSize(minHeight = minHeight)
-                    .padding(paddingValues),
-                content = content
-            )
-        }
+        Row(
+            modifier = Modifier
+                .heightIn(min = minHeight)
+                .padding(paddingValues),
+            content = content
+        )
     }
 }
 
 @Composable
-private fun HeadlineText (
-    largeHeadline: Boolean,
-    paddingEnabled: Boolean = true,
+private fun HeadlineText(
+    largeText: Boolean,
     text: String,
+    paddingEnabled: Boolean = false,
+    color: Color,
     maxLines: Int
 ) {
-    val topPadding: Dp =
+    val paddingModifier: Modifier =
         if (paddingEnabled) {
-            LargeHeadlineTopPadding
+            if (largeText) {
+                Modifier.padding(top = LargeHeadlineTopPadding)
+            } else {
+                Modifier.padding(top = MediumHeadlineTopPadding)
+            }
         } else {
-            2.dp
+            Modifier.padding(vertical = OneLineTextVerticalPadding)
         }
 
-    if (largeHeadline) {
+    if (largeText) {
         Text(
             text = text,
-            modifier = Modifier.padding(top = topPadding),
+            modifier = paddingModifier,
             style = MaterialTheme.typography.titleLarge,
             fontSize = 20.sp,
+            color = color,
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis
         )
     } else {
         Text(
             text = text,
-            modifier = Modifier.padding(top = topPadding),
+            modifier = paddingModifier,
             style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.onSurface,
+            color = color,
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis
         )
@@ -299,86 +277,36 @@ private fun HeadlineText (
 }
 
 @Composable
-private fun SupportingText (
+private fun SupportingText(
     text: String,
+    color: Color,
     maxLines: Int
 ) {
-    if(maxLines != 1) {
-        Text(
-            text = text,
-            modifier = Modifier.padding(bottom = SupportingBottomPadding),
-            style = MaterialTheme.typography.bodyMedium,
-            fontSize = 14.sp,
-            maxLines = maxLines
-        )
-    } else {
-        Text(
-            text = text,
-            modifier = Modifier.padding(bottom = SupportingBottomPadding),
-            style = MaterialTheme.typography.bodyMedium,
-            fontSize = 14.sp,
-            maxLines = maxLines,
-            overflow = TextOverflow.Ellipsis
-        )
-    }
-}
-
-@Composable
-private fun LeadingUnit (
-    leadingContent: @Composable () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .padding(end = HorizontalPadding)
-            .widthIn(
-                min = ContentMinWidth,
-                max = ContentMaxWidth
-            )
-            .heightIn(
-                min = ContentMinHeight,
-                max = ContentMaxHeight
-            ),
-        contentAlignment = Alignment.Center,
-    ) { leadingContent() }
-}
-
-@Composable
-private fun TrailingUnit (
-    trailingContent: @Composable (() -> Unit)
-) {
-    Box(
-        modifier = Modifier
-            .padding(start = HorizontalPadding)
-            .widthIn(
-                min = ContentMinWidth,
-                max = ContentMaxWidth
-            )
-            .heightIn(
-                min = ContentMinHeight,
-                max = ContentMaxHeight
-            ),
-        contentAlignment = Alignment.Center,
-    ) { trailingContent() }
+    Text(
+        text = text,
+        modifier = Modifier,
+        style = MaterialTheme.typography.bodyMedium,
+        fontSize = 14.sp,
+        color = color,
+        maxLines = maxLines,
+        overflow = TextOverflow.Ellipsis
+    )
 }
 
 object PixelyListItemDefaults {
     val ContainerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
     val ContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+    val SecondaryContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 }
 
+// Container/Row related values
 private val OneLineMinHeight: Dp = 60.dp
-private val TwoLinesMinHeight: Dp = 80.dp
+private val TwoLineMinHeight: Dp = 80.dp
 
-private val ContentMinHeight: Dp = 52.dp
-private val ContentMinWidth: Dp = 52.dp
-private val ContentMaxHeight: Dp = 60.dp
-private val ContentMaxWidth: Dp = 110.dp
+private val ContainerPadding: Dp = 10.dp
 
-private val ColumnMinHeight: Dp = 60.dp
-
+// Text related values
 private val LargeHeadlineTopPadding: Dp = 7.dp
 private val MediumHeadlineTopPadding: Dp = 10.dp
-private val SupportingBottomPadding: Dp = 4.dp
 
-private val HorizontalPadding: Dp = 10.dp
-private val VerticalPadding: Dp = 10.dp
+private val OneLineTextVerticalPadding: Dp = 10.dp
