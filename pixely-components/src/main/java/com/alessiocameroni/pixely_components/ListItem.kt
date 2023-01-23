@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
  * @param stringSupportingText the supporting text of the list item
  * @param maxSupportingLines maximum lines allowed for the supporting text
  * @param leadingContent the leading unit on the left of the text
- * @param trailingContent the trasiling unit on the right of the text
+ * @param trailingContent the trailing unit on the right of the text
  */
 @Composable
 fun PixelyListItem(
@@ -43,20 +43,24 @@ fun PixelyListItem(
         // Headline and Supporting text
         ContainerListItem(
             modifier = modifier,
-            minHeight = PixelyListItemDefaults.TwoLinesMinHeight,
+            minHeight = TwoLinesMinHeight,
             paddingValues = PaddingValues(
-                horizontal = PixelyListItemDefaults.HorizontalMinPadding
+                horizontal = HorizontalPadding,
+                vertical = VerticalPadding
             ),
             maxHeadlineLines = maxHeadlineLines,
             maxSupportingLines = maxSupportingLines
         ) {
             if (leadingContent != null && trailingContent != null) {
-                // Leading and Trailing units
-                LeadingUnit (
+                LeadingUnit(
                     leadingContent = { leadingContent() }
                 )
 
-                Column(modifier = Modifier.weight(1f)) {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
+                ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
                         text = stringHeadlineText,
@@ -74,15 +78,14 @@ fun PixelyListItem(
                 )
             }
             else if (leadingContent != null) {
-                // Only Leading unit
-                LeadingUnit (
+                LeadingUnit(
                     leadingContent = { leadingContent() }
                 )
 
                 Column(
                     modifier = Modifier
-                        .padding(end = PixelyListItemDefaults.HorizontalMaxPadding)
                         .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
                 ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
@@ -97,11 +100,10 @@ fun PixelyListItem(
                 }
             }
             else if (trailingContent != null) {
-                // Only Trailing unit
                 Column(
                     modifier = Modifier
-                        .padding(start = PixelyListItemDefaults.HorizontalMaxPadding)
                         .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
                 ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
@@ -120,11 +122,10 @@ fun PixelyListItem(
                 )
             }
             else {
-                // Only text
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = PixelyListItemDefaults.HorizontalMaxPadding)
                         .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
                 ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
@@ -132,11 +133,9 @@ fun PixelyListItem(
                         maxLines = maxHeadlineLines
                     )
 
-                    Text(
-                        modifier = Modifier.fillMaxWidth(),
+                    SupportingText(
                         text = stringSupportingText,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontSize = 14.sp
+                        maxLines = maxSupportingLines
                     )
                 }
             }
@@ -145,22 +144,27 @@ fun PixelyListItem(
         // Only Headline text
         ContainerListItem(
             modifier = modifier,
-            minHeight = PixelyListItemDefaults.OneLineMinHeight,
+            minHeight = OneLineMinHeight,
             paddingValues = PaddingValues(
-                horizontal = PixelyListItemDefaults.HorizontalMinPadding
+                horizontal = HorizontalPadding,
+                vertical = 0.dp
             ),
             maxHeadlineLines = maxHeadlineLines,
             maxSupportingLines = maxSupportingLines
         ) {
             if (leadingContent != null && trailingContent != null) {
-                // Leading and Trailing units
-                LeadingUnit (
+                LeadingUnit(
                     leadingContent = { leadingContent() }
                 )
 
-                Column(modifier = Modifier.weight(1f)) {
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
+                ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
+                        paddingEnabled = false,
                         text = stringHeadlineText,
                         maxLines = maxHeadlineLines
                     )
@@ -171,33 +175,32 @@ fun PixelyListItem(
                 )
             }
             else if (leadingContent != null) {
-                // Only Leading unit
-                LeadingUnit (
+                LeadingUnit(
                     leadingContent = { leadingContent() }
                 )
 
                 Column(
                     modifier = Modifier
-                        .padding(end = PixelyListItemDefaults.HorizontalMaxPadding)
                         .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
                 ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
+                        paddingEnabled = false,
                         text = stringHeadlineText,
                         maxLines = maxHeadlineLines
                     )
                 }
             }
             else if (trailingContent != null) {
-                // Only Trailing unit
                 Column(
                     modifier = Modifier
-                        .padding(start = PixelyListItemDefaults.HorizontalMaxPadding)
-                        .weight(1f),
-                    verticalArrangement = Arrangement.Center
+                        .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
                 ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
+                        paddingEnabled = false,
                         text = stringHeadlineText,
                         maxLines = maxHeadlineLines
                     )
@@ -208,15 +211,14 @@ fun PixelyListItem(
                 )
             }
             else {
-                // Only text
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = PixelyListItemDefaults.HorizontalMaxPadding)
-                        .weight(1f),
-                    verticalArrangement = Arrangement.Center
+                        .weight(1f)
+                        .defaultMinSize(minHeight = ColumnMinHeight)
                 ) {
                     HeadlineText(
                         largeHeadline = largeHeadline,
+                        paddingEnabled = false,
                         text = stringHeadlineText,
                         maxLines = maxHeadlineLines
                     )
@@ -242,19 +244,19 @@ private fun ContainerListItem(
         color = containerColor,
         contentColor = contentColor
     ) {
-        if (maxHeadlineLines == 1 && maxSupportingLines == 1) {
+        if (maxSupportingLines == 1) {
             Row(
                 modifier = Modifier
-                    .padding(paddingValues)
-                    .defaultMinSize(minHeight = minHeight),
+                    .defaultMinSize(minHeight = minHeight)
+                    .padding(paddingValues),
                 content = content,
                 verticalAlignment = Alignment.CenterVertically
             )
         } else {
             Row(
                 modifier = Modifier
-                    .padding(paddingValues)
-                    .defaultMinSize(minHeight = minHeight),
+                    .defaultMinSize(minHeight = minHeight)
+                    .padding(paddingValues),
                 content = content
             )
         }
@@ -264,13 +266,21 @@ private fun ContainerListItem(
 @Composable
 private fun HeadlineText (
     largeHeadline: Boolean,
+    paddingEnabled: Boolean = true,
     text: String,
     maxLines: Int
 ) {
+    val topPadding: Dp =
+        if (paddingEnabled) {
+            LargeHeadlineTopPadding
+        } else {
+            2.dp
+        }
+
     if (largeHeadline) {
         Text(
             text = text,
-            modifier = Modifier.padding(top = PixelyListItemDefaults.TextLargeTopPadding),
+            modifier = Modifier.padding(top = topPadding),
             style = MaterialTheme.typography.titleLarge,
             fontSize = 20.sp,
             maxLines = maxLines,
@@ -279,7 +289,7 @@ private fun HeadlineText (
     } else {
         Text(
             text = text,
-            modifier = Modifier.padding(top = PixelyListItemDefaults.TextMediumTopPadding),
+            modifier = Modifier.padding(top = topPadding),
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurface,
             maxLines = maxLines,
@@ -296,7 +306,7 @@ private fun SupportingText (
     if(maxLines != 1) {
         Text(
             text = text,
-            modifier = Modifier.padding(bottom = PixelyListItemDefaults.TextBottomPadding),
+            modifier = Modifier.padding(bottom = SupportingBottomPadding),
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 14.sp,
             maxLines = maxLines
@@ -304,7 +314,7 @@ private fun SupportingText (
     } else {
         Text(
             text = text,
-            modifier = Modifier.padding(bottom = PixelyListItemDefaults.TextBottomPadding),
+            modifier = Modifier.padding(bottom = SupportingBottomPadding),
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 14.sp,
             maxLines = maxLines,
@@ -315,14 +325,19 @@ private fun SupportingText (
 
 @Composable
 private fun LeadingUnit (
-    leadingContent: @Composable (() -> Unit)
+    leadingContent: @Composable () -> Unit
 ) {
     Box(
         modifier = Modifier
-            .padding(end = PixelyListItemDefaults.HorizontalMinPadding)
-            .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
-            .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
-            .height(PixelyListItemDefaults.UnitSize),
+            .padding(end = HorizontalPadding)
+            .widthIn(
+                min = ContentMinWidth,
+                max = ContentMaxWidth
+            )
+            .heightIn(
+                min = ContentMinHeight,
+                max = ContentMaxHeight
+            ),
         contentAlignment = Alignment.Center,
     ) { leadingContent() }
 }
@@ -333,28 +348,37 @@ private fun TrailingUnit (
 ) {
     Box(
         modifier = Modifier
-            .padding(start = PixelyListItemDefaults.HorizontalMinPadding)
-            .padding(vertical = PixelyListItemDefaults.UnitVerticalPadding)
-            .defaultMinSize(minWidth = PixelyListItemDefaults.UnitSize)
-            .height(PixelyListItemDefaults.UnitSize),
-        contentAlignment = Alignment.Center
+            .padding(start = HorizontalPadding)
+            .widthIn(
+                min = ContentMinWidth,
+                max = ContentMaxWidth
+            )
+            .heightIn(
+                min = ContentMinHeight,
+                max = ContentMaxHeight
+            ),
+        contentAlignment = Alignment.Center,
     ) { trailingContent() }
 }
 
 object PixelyListItemDefaults {
-    val OneLineMinHeight: Dp = 60.dp
-    val TwoLinesMinHeight: Dp = 80.dp
-
     val ContainerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
     val ContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
-
-    val HorizontalMinPadding: Dp = 5.dp
-    val HorizontalMaxPadding: Dp = 20.dp
-
-    val UnitSize: Dp = 60.dp
-    val UnitVerticalPadding: Dp = 10.dp
-
-    val TextMediumTopPadding: Dp = 18.dp
-    val TextLargeTopPadding: Dp = 16.dp
-    val TextBottomPadding: Dp = 14.dp
 }
+
+private val OneLineMinHeight: Dp = 60.dp
+private val TwoLinesMinHeight: Dp = 80.dp
+
+private val ContentMinHeight: Dp = 52.dp
+private val ContentMinWidth: Dp = 52.dp
+private val ContentMaxHeight: Dp = 60.dp
+private val ContentMaxWidth: Dp = 110.dp
+
+private val ColumnMinHeight: Dp = 60.dp
+
+private val LargeHeadlineTopPadding: Dp = 7.dp
+private val MediumHeadlineTopPadding: Dp = 10.dp
+private val SupportingBottomPadding: Dp = 4.dp
+
+private val HorizontalPadding: Dp = 10.dp
+private val VerticalPadding: Dp = 10.dp
