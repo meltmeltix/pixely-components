@@ -87,6 +87,7 @@ fun PixelyListItem(
 
                 Column(
                     modifier = Modifier
+                        .padding(end = OnlyTextHorizontalPadding)
                         .weight(1f)
                         .heightIn(min = OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
@@ -104,6 +105,7 @@ fun PixelyListItem(
                 // Headline Text and Trailing Content only
                 Column(
                     modifier = Modifier
+                        .padding(start = OnlyTextHorizontalPadding)
                         .weight(1f)
                         .heightIn(min = OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
@@ -127,6 +129,7 @@ fun PixelyListItem(
                 // Headline Text only
                 Column(
                     modifier = Modifier
+                        .padding(horizontal = OnlyTextHorizontalPadding)
                         .weight(1f)
                         .heightIn(min = OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
@@ -194,6 +197,7 @@ fun PixelyListItem(
 
                 Column(
                     modifier = Modifier
+                        .padding(end = OnlyTextHorizontalPadding)
                         .weight(1f)
                         .heightIn(min = OneLineMinHeight)
                 ) {
@@ -216,6 +220,7 @@ fun PixelyListItem(
                 // Headline and Supporting Text, Trailing Content only
                 Column(
                     modifier = Modifier
+                        .padding(start = OnlyTextHorizontalPadding)
                         .weight(1f)
                         .heightIn(min = OneLineMinHeight)
                 ) {
@@ -244,6 +249,7 @@ fun PixelyListItem(
                 // Headline and Supporting Text only
                 Column(
                     modifier = Modifier
+                        .padding(horizontal = OnlyTextHorizontalPadding)
                         .weight(1f)
                         .heightIn(min = OneLineMinHeight)
                 ) {
@@ -416,6 +422,8 @@ private val MediumHeadlineTopPadding: Dp = 9.dp
 private val SupportingTextBottomPadding: Dp = 5.dp
 
 private val OneLineTextVerticalPadding: Dp = 10.dp
+
+private val OnlyTextHorizontalPadding: Dp = 15.dp
 
 // Leading and trailing content related values
 private val ContentMinHeight: Dp = 60.dp
