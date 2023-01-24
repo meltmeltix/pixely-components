@@ -14,6 +14,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.input.ImeAction
 
+/**
+ * ### Pixely Text Field
+ * This component is a normal TextField without decorations or borders.
+ * This component is meant to be included with other components such
+ * as a TopAppBar.
+ *
+ * @param stringText the text written inside the Text Field
+ * @param stringPlaceHolder the text of the placeholder of the Text Field
+ * @param clearTrailingIcon the Icon displayed on the right of the Text Field
+ * @param descriptionTrailingIcon the accessibility description of the Trailing Icon
+ * @param onSearch the action performed when pressing Submit on the keyboard
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PixelyTextField (

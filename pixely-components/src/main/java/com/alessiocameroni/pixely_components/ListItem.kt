@@ -173,7 +173,7 @@ fun PixelyListItem(
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        color = PixelyListItemDefaults.ContentSecondaryColor,
                         maxLines = maxSupportingTextLines
                     )
                 }
@@ -207,7 +207,7 @@ fun PixelyListItem(
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        color = PixelyListItemDefaults.ContentSecondaryColor,
                         maxLines = maxSupportingTextLines
                     )
                 }
@@ -229,7 +229,7 @@ fun PixelyListItem(
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        color = PixelyListItemDefaults.ContentSecondaryColor,
                         maxLines = maxSupportingTextLines
                     )
                 }
@@ -257,7 +257,7 @@ fun PixelyListItem(
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.SecondaryContentColor,
+                        color = PixelyListItemDefaults.ContentSecondaryColor,
                         maxLines = maxSupportingTextLines
                     )
                 }
@@ -400,7 +400,7 @@ private fun SideContent(
 object PixelyListItemDefaults {
     val ContainerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
     val ContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
-    val SecondaryContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+    val ContentSecondaryColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 }
 
 // Component related values
