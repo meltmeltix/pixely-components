@@ -41,7 +41,7 @@ fun PixelyListItem(
 ) {
     if (supportingTextString == null) {
         // One-Line List Item
-        ContentContainer(
+        ListItemContainer(
             modifier = modifier,
             containerColor = PixelyListItemDefaults.ContainerColor,
             contentColor = PixelyListItemDefaults.ContentColor,
@@ -50,7 +50,9 @@ fun PixelyListItem(
         ) {
             if (leadingContent != null && trailingContent != null) {
                 // Headline Text, Leading and Trailing Content
-                LeadingContent (
+                SideContent(
+                    endPadding = ComponentPadding,
+                    topAlign = true,
                     content = { leadingContent() }
                 )
 
@@ -69,13 +71,17 @@ fun PixelyListItem(
                     )
                 }
 
-                TrailingContent (
+                SideContent(
+                    startPadding = ComponentPadding,
+                    topAlign = true,
                     content = { trailingContent() }
                 )
             }
             else if (leadingContent != null) {
                 // Headline Text and Leading Content only
-                LeadingContent (
+                SideContent(
+                    endPadding = ComponentPadding,
+                    topAlign = true,
                     content = { leadingContent() }
                 )
 
@@ -111,7 +117,9 @@ fun PixelyListItem(
                     )
                 }
 
-                TrailingContent (
+                SideContent(
+                    startPadding = ComponentPadding,
+                    topAlign = true,
                     content = { trailingContent() }
                 )
             }
@@ -135,16 +143,18 @@ fun PixelyListItem(
         }
     } else {
         // Two-Line List Item
-        ContentContainer(
+        ListItemContainer(
             modifier = modifier,
             containerColor = PixelyListItemDefaults.ContainerColor,
             contentColor = PixelyListItemDefaults.ContentColor,
             minHeight = TwoLineMinHeight,
-            paddingValues = PaddingValues(ComponentPadding),
+            paddingValues = PaddingValues(ComponentPadding)
         ) {
             if (leadingContent != null && trailingContent != null) {
                 // Headline and Supporting Text, Leading and Trailing Content
-                LeadingContent (
+                SideContent(
+                    endPadding = ComponentPadding,
+                    topAlign = true,
                     content = { leadingContent() }
                 )
 
@@ -168,13 +178,17 @@ fun PixelyListItem(
                     )
                 }
 
-                TrailingContent (
+                SideContent(
+                    startPadding = ComponentPadding,
+                    topAlign = true,
                     content = { trailingContent() }
                 )
             }
             else if (leadingContent != null) {
                 // Headline and Supporting Text, Leading Content only
-                LeadingContent (
+                SideContent(
+                    endPadding = ComponentPadding,
+                    topAlign = true,
                     content = { leadingContent() }
                 )
 
@@ -220,7 +234,9 @@ fun PixelyListItem(
                     )
                 }
 
-                TrailingContent (
+                SideContent(
+                    startPadding = ComponentPadding,
+                    topAlign = true,
                     content = { trailingContent() }
                 )
             }
@@ -251,7 +267,7 @@ fun PixelyListItem(
 }
 
 @Composable
-private fun ContentContainer(
+private fun ListItemContainer(
     modifier: Modifier,
     containerColor: Color,
     contentColor: Color,
@@ -266,9 +282,11 @@ private fun ContentContainer(
     ) {
         Row(
             modifier = Modifier
+                .height(IntrinsicSize.Min)
                 .heightIn(min = minHeight)
                 .padding(paddingValues),
-            content = content
+            content = content,
+            verticalAlignment = Alignment.CenterVertically
         )
     }
 }
@@ -342,41 +360,41 @@ private fun SupportingText(
 }
 
 @Composable
-private fun LeadingContent(
+private fun SideContent(
+    startPadding: Dp = 0.dp,
+    endPadding: Dp = 0.dp,
+    topAlign: Boolean,
     content: @Composable (() -> Unit)
 ) {
-    Box(
-        modifier = Modifier
-            .padding(end = ComponentPadding)
-            .heightIn(
-                min = ContentMinHeight,
-                max = ContentMaxHeight
-            )
-            .widthIn(
-                min = ContentMinWidth,
-                max = ContentMaxWidth
-            ),
-        contentAlignment = Alignment.Center
-    ) { content() }
-}
+    val alignmentMode: Alignment =
+        if (topAlign) {
+            Alignment.TopCenter
+        } else {
+            Alignment.Center
+        }
 
-@Composable
-private fun TrailingContent(
-    content: @Composable (() -> Unit)
-) {
     Box(
         modifier = Modifier
-            .padding(start = ComponentPadding)
-            .heightIn(
-                min = ContentMinHeight,
-                max = ContentMaxHeight
+            .padding(
+                start = startPadding,
+                end = endPadding
             )
-            .widthIn(
-                min = ContentMinWidth,
-                max = ContentMaxWidth
-            ),
-        contentAlignment = Alignment.Center
-    ) { content() }
+            .fillMaxHeight(),
+        contentAlignment = alignmentMode
+    ) {
+        Box(
+            modifier = Modifier
+                .heightIn(
+                    min = ContentMinHeight,
+                    max = ContentMaxHeight
+                )
+                .widthIn(
+                    min = ContentMinWidth,
+                    max = ContentMaxWidth
+                ),
+            contentAlignment = Alignment.Center
+        ) { content() }
+    }
 }
 
 object PixelyListItemDefaults {
@@ -385,7 +403,7 @@ object PixelyListItemDefaults {
     val SecondaryContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 }
 
-// Compoinent related values
+// Component related values
 private val ComponentPadding: Dp = 10.dp
 
 // Container/Row related values
@@ -400,7 +418,7 @@ private val SupportingTextBottomPadding: Dp = 5.dp
 private val OneLineTextVerticalPadding: Dp = 10.dp
 
 // Leading and trailing content related values
-private val ContentMinHeight: Dp = 52.dp
+private val ContentMinHeight: Dp = 60.dp
 private val ContentMinWidth: Dp = 52.dp
 
 private val ContentMaxHeight: Dp = 60.dp
