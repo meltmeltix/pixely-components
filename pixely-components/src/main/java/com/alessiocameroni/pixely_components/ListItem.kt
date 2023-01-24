@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
  * @param largeHeadline toggles large or medium text style applied to the Headline text
  * @param maxHeadlineLines number of maximum lines applied to the Headline text
  * @param supportingTextString the Supporting text of the list item, below the Headline text
- * @param maxSupportingTextLines number of maximum lines applied to the Supporting text
+ * @param maxSupportingLines number of maximum lines applied to the Supporting text
  * @param leadingContent leading content on the left of the text column
  * @param trailingContent trailing content on the right of the text column
  */
@@ -35,7 +35,7 @@ fun PixelyListItem(
     largeHeadline: Boolean = true,
     maxHeadlineLines: Int = 1,
     supportingTextString: String? = null,
-    maxSupportingTextLines: Int = 0,
+    maxSupportingLines: Int = 0,
     leadingContent: @Composable (() -> Unit)? = null,
     trailingContent: @Composable (() -> Unit)? = null
 ) {
@@ -174,7 +174,7 @@ fun PixelyListItem(
                     SupportingText(
                         text = supportingTextString,
                         color = PixelyListItemDefaults.ContentSecondaryColor,
-                        maxLines = maxSupportingTextLines
+                        maxLines = maxSupportingLines
                     )
                 }
 
@@ -208,7 +208,7 @@ fun PixelyListItem(
                     SupportingText(
                         text = supportingTextString,
                         color = PixelyListItemDefaults.ContentSecondaryColor,
-                        maxLines = maxSupportingTextLines
+                        maxLines = maxSupportingLines
                     )
                 }
             }
@@ -230,7 +230,7 @@ fun PixelyListItem(
                     SupportingText(
                         text = supportingTextString,
                         color = PixelyListItemDefaults.ContentSecondaryColor,
-                        maxLines = maxSupportingTextLines
+                        maxLines = maxSupportingLines
                     )
                 }
 
@@ -258,7 +258,7 @@ fun PixelyListItem(
                     SupportingText(
                         text = supportingTextString,
                         color = PixelyListItemDefaults.ContentSecondaryColor,
-                        maxLines = maxSupportingTextLines
+                        maxLines = maxSupportingLines
                     )
                 }
             }
