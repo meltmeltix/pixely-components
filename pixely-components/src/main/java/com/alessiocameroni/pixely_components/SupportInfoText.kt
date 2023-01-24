@@ -50,13 +50,13 @@ fun PixelySupportInfoText(
                     painter = painterInfoIcon,
                     contentDescription = descriptionInfoIcon
                 )
-
-                Text(
-                    text = stringText,
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontSize = 14.sp
-                )
             }
+
+            Text(
+                text = stringText,
+                style = MaterialTheme.typography.bodyMedium,
+                fontSize = 14.sp
+            )
         }
     }
 }
