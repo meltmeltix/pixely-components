@@ -1,12 +1,13 @@
 package com.alessiocameroni.pixely_components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -30,29 +31,61 @@ fun PixelySupportInfoText(
     painterInfoIcon: Painter? = null,
     descriptionInfoIcon: String? = null
 ) {
-    Column(
-        modifier = modifier
-            .padding(
-                horizontal = HorizontalColumnPadding,
-                vertical = VerticalColumnPadding
-            )
+    SupportInfoTextContainer(
+        modifier = modifier,
+        containerColor = PixelySupportInfoTextDefaults.ContainerColor,
+        contentColor = PixelySupportInfoTextDefaults.ContentColor,
+        paddingValues = PaddingValues(
+            horizontal = HorizontalColumnPadding,
+            vertical = VerticalColumnPadding
+        )
     ) {
-        if (painterInfoIcon != null) {
-            Icon(
-                modifier = Modifier
-                    .padding(bottom = BottomIconPadding),
-                painter = painterInfoIcon,
-                contentDescription = descriptionInfoIcon
-            )
-        }
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            if (painterInfoIcon != null) {
+                Icon(
+                    modifier = Modifier
+                        .padding(bottom = BottomIconPadding),
+                    painter = painterInfoIcon,
+                    contentDescription = descriptionInfoIcon
+                )
 
-        Text(
-            modifier = Modifier.weight(1f),
-            text = stringText,
-            style = MaterialTheme.typography.bodyMedium,
-            fontSize = 14.sp
+                Text(
+                    text = stringText,
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontSize = 14.sp
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun SupportInfoTextContainer(
+    modifier: Modifier,
+    containerColor: Color,
+    contentColor: Color,
+    paddingValues: PaddingValues,
+    content: @Composable RowScope.() -> Unit
+) {
+    Surface(
+        modifier = modifier,
+        color = containerColor,
+        contentColor = contentColor
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(paddingValues),
+            content = { content() }
         )
     }
+}
+
+object PixelySupportInfoTextDefaults {
+    val ContainerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+    val ContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+    val ContentSecondaryColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 }
 
 // Column related values
