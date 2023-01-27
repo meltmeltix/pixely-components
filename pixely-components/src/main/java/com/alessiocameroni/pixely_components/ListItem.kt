@@ -1,10 +1,11 @@
 package com.alessiocameroni.pixely_components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -12,6 +13,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.alessiocameroni.pixely_components.tokens.ListTokens
 
 /**
  * ### Pixely List Item
@@ -31,72 +33,77 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun PixelyListItem(
     modifier: Modifier,
+    enabled: Boolean = true,
     headlineTextString: String,
     largeHeadline: Boolean = true,
     maxHeadlineLines: Int = 1,
     supportingTextString: String? = null,
     maxSupportingLines: Int = 0,
     leadingContent: @Composable (() -> Unit)? = null,
-    trailingContent: @Composable (() -> Unit)? = null
+    trailingContent: @Composable (() -> Unit)? = null,
+    colors: PixelyListItemColors = PixelyListItemDefaults.colors()
 ) {
     if (supportingTextString == null) {
         // One-Line List Item
         ListItemContainer(
             modifier = modifier,
-            containerColor = PixelyListItemDefaults.ContainerColor,
-            contentColor = PixelyListItemDefaults.ContentColor,
-            minHeight = OneLineMinHeight,
-            paddingValues = PaddingValues(horizontal = ComponentPadding)
+            containerColor = colors.containerColor().value,
+            contentColor = colors.headlineColor(enabled = enabled).value,
+            minHeight = ListTokens.OneLineMinHeight,
+            paddingValues = PaddingValues(horizontal = ListTokens.ComponentPadding)
         ) {
             if (leadingContent != null && trailingContent != null) {
                 // Headline Text, Leading and Trailing Content
                 SideContent(
-                    endPadding = ComponentPadding,
+                    endPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { leadingContent() }
+                    content = { leadingContent() },
+                    color = colors.leadingContentColor(enabled = enabled).value
                 )
 
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight),
+                        .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = true,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
                 }
 
                 SideContent(
-                    startPadding = ComponentPadding,
+                    startPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { trailingContent() }
+                    content = { trailingContent() },
+                    color = colors.trailingContentColor(enabled = enabled).value
                 )
             }
             else if (leadingContent != null) {
                 // Headline Text and Leading Content only
                 SideContent(
-                    endPadding = ComponentPadding,
+                    endPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { leadingContent() }
+                    content = { leadingContent() },
+                    color = colors.leadingContentColor(enabled = enabled).value
                 )
 
                 Column(
                     modifier = Modifier
-                        .padding(end = OnlyTextHorizontalPadding)
+                        .padding(end = ListTokens.OnlyTextHorizontalPadding)
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight),
+                        .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = true,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
                 }
@@ -105,40 +112,41 @@ fun PixelyListItem(
                 // Headline Text and Trailing Content only
                 Column(
                     modifier = Modifier
-                        .padding(start = OnlyTextHorizontalPadding)
+                        .padding(start = ListTokens.OnlyTextHorizontalPadding)
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight),
+                        .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = true,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
                 }
 
                 SideContent(
-                    startPadding = ComponentPadding,
+                    startPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { trailingContent() }
+                    content = { trailingContent() },
+                    color = colors.trailingContentColor(enabled = enabled).value
                 )
             }
             else {
                 // Headline Text only
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = OnlyTextHorizontalPadding)
+                        .padding(horizontal = ListTokens.OnlyTextHorizontalPadding)
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight),
+                        .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = true,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
                 }
@@ -148,70 +156,73 @@ fun PixelyListItem(
         // Two-Line List Item
         ListItemContainer(
             modifier = modifier,
-            containerColor = PixelyListItemDefaults.ContainerColor,
-            contentColor = PixelyListItemDefaults.ContentColor,
-            minHeight = TwoLineMinHeight,
-            paddingValues = PaddingValues(ComponentPadding)
+            containerColor = colors.containerColor().value,
+            contentColor = colors.headlineColor(enabled = enabled).value,
+            minHeight = ListTokens.TwoLineMinHeight,
+            paddingValues = PaddingValues(ListTokens.ComponentPadding)
         ) {
             if (leadingContent != null && trailingContent != null) {
                 // Headline and Supporting Text, Leading and Trailing Content
                 SideContent(
-                    endPadding = ComponentPadding,
+                    endPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { leadingContent() }
+                    content = { leadingContent() },
+                    color = colors.leadingContentColor(enabled = enabled).value
                 )
 
                 Column(
                     modifier = Modifier
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight)
+                        .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = false,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.ContentSecondaryColor,
+                        color = colors.supportingTextColor().value,
                         maxLines = maxSupportingLines
                     )
                 }
 
                 SideContent(
-                    startPadding = ComponentPadding,
+                    startPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { trailingContent() }
+                    content = { trailingContent() },
+                    color = colors.trailingContentColor(enabled = enabled).value
                 )
             }
             else if (leadingContent != null) {
                 // Headline and Supporting Text, Leading Content only
                 SideContent(
-                    endPadding = ComponentPadding,
+                    endPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { leadingContent() }
+                    content = { leadingContent() },
+                    color = colors.leadingContentColor(enabled = enabled).value
                 )
 
                 Column(
                     modifier = Modifier
-                        .padding(end = OnlyTextHorizontalPadding)
+                        .padding(end = ListTokens.OnlyTextHorizontalPadding)
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight)
+                        .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = false,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.ContentSecondaryColor,
+                        color = colors.supportingTextColor().value,
                         maxLines = maxSupportingLines
                     )
                 }
@@ -220,50 +231,51 @@ fun PixelyListItem(
                 // Headline and Supporting Text, Trailing Content only
                 Column(
                     modifier = Modifier
-                        .padding(start = OnlyTextHorizontalPadding)
+                        .padding(start = ListTokens.OnlyTextHorizontalPadding)
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight)
+                        .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = false,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.ContentSecondaryColor,
+                        color = colors.supportingTextColor().value,
                         maxLines = maxSupportingLines
                     )
                 }
 
                 SideContent(
-                    startPadding = ComponentPadding,
+                    startPadding = ListTokens.ComponentPadding,
                     topAlign = true,
-                    content = { trailingContent() }
+                    content = { trailingContent() },
+                    color = colors.trailingContentColor(enabled = enabled).value
                 )
             }
             else {
                 // Headline and Supporting Text only
                 Column(
                     modifier = Modifier
-                        .padding(horizontal = OnlyTextHorizontalPadding)
+                        .padding(horizontal = ListTokens.OnlyTextHorizontalPadding)
                         .weight(1f)
-                        .heightIn(min = OneLineMinHeight)
+                        .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
                         largeText = largeHeadline,
                         text = headlineTextString,
                         verticalPaddingEnabled = false,
-                        color = PixelyListItemDefaults.ContentColor,
+                        color = colors.headlineColor(enabled = enabled).value,
                         maxLines = maxHeadlineLines
                     )
 
                     SupportingText(
                         text = supportingTextString,
-                        color = PixelyListItemDefaults.ContentSecondaryColor,
+                        color = colors.supportingTextColor().value,
                         maxLines = maxSupportingLines
                     )
                 }
@@ -275,8 +287,8 @@ fun PixelyListItem(
 @Composable
 private fun ListItemContainer(
     modifier: Modifier,
-    containerColor: Color,
-    contentColor: Color,
+    containerColor: Color = PixelyListItemDefaults.containerColor,
+    contentColor: Color = PixelyListItemDefaults.contentColor,
     minHeight: Dp,
     paddingValues: PaddingValues,
     content: @Composable RowScope.() -> Unit
@@ -302,17 +314,17 @@ private fun HeadlineText(
     largeText: Boolean,
     text: String,
     verticalPaddingEnabled: Boolean = false,
-    color: Color,
+    color: Color = PixelyListItemDefaults.contentColor,
     maxLines: Int
 ) {
     val paddingModifier: Modifier =
         if (verticalPaddingEnabled) {
-            Modifier.padding(vertical = OneLineTextVerticalPadding)
+            Modifier.padding(vertical = ListTokens.OneLineTextVerticalPadding)
         } else {
             if (largeText) {
-                Modifier.padding(top = LargeHeadlineTopPadding)
+                Modifier.padding(top = ListTokens.LargeHeadlineTopPadding)
             } else {
-                Modifier.padding(top = MediumHeadlineTopPadding)
+                Modifier.padding(top = ListTokens.MediumHeadlineTopPadding)
             }
         }
 
@@ -341,13 +353,13 @@ private fun HeadlineText(
 @Composable
 private fun SupportingText(
     text: String,
-    color: Color,
+    color: Color = PixelyListItemDefaults.contentSecondaryColor,
     maxLines: Int
 ) {
     if(maxLines > 0) {
         Text(
             text = text,
-            modifier = Modifier.padding(bottom = SupportingTextBottomPadding),
+            modifier = Modifier.padding(bottom = ListTokens.SupportingTextBottomPadding),
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 14.sp,
             color = color,
@@ -357,7 +369,7 @@ private fun SupportingText(
     } else {
         Text(
             text = text,
-            modifier = Modifier.padding(bottom = SupportingTextBottomPadding),
+            modifier = Modifier.padding(bottom = ListTokens.SupportingTextBottomPadding),
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 14.sp,
             color = color
@@ -370,7 +382,8 @@ private fun SideContent(
     startPadding: Dp = 0.dp,
     endPadding: Dp = 0.dp,
     topAlign: Boolean,
-    content: @Composable (() -> Unit)
+    content: @Composable (() -> Unit),
+    color: Color = PixelyListItemDefaults.contentColor
 ) {
     val alignmentMode: Alignment =
         if (topAlign) {
@@ -388,46 +401,112 @@ private fun SideContent(
             .fillMaxHeight(),
         contentAlignment = alignmentMode
     ) {
-        Box(
-            modifier = Modifier
-                .heightIn(
-                    min = ContentMinHeight,
-                    max = ContentMaxHeight
-                )
-                .widthIn(
-                    min = ContentMinWidth,
-                    max = ContentMaxWidth
-                ),
-            contentAlignment = Alignment.Center
-        ) { content() }
+        CompositionLocalProvider(LocalContentColor provides color) {
+            Box(
+                modifier = Modifier
+                    .heightIn(
+                        min = ListTokens.ContentMinHeight,
+                        max = ListTokens.ContentMaxHeight
+                    )
+                    .widthIn(
+                        min = ListTokens.ContentMinWidth,
+                        max = ListTokens.ContentMaxWidth
+                    ),
+                contentAlignment = Alignment.Center
+            ) { content() }
+        }
     }
 }
 
 object PixelyListItemDefaults {
-    val ContainerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
-    val ContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
-    val ContentSecondaryColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+    /**
+     * The default container color value
+     */
+    val containerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+
+    /**
+     * The default content color value
+     */
+    val contentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+
+    /**
+     * The default secondary content color value
+     */
+    val contentSecondaryColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+
+    /**
+     * ### Pixely List Item Colors
+     *
+     * @param containerColor
+     * @param leadingContentColor
+     * @param headlineColor
+     * @param supportingTextColor
+     * @param trailingContentColor
+     * @param disabledLeadingContentColor
+     * @param disabledHeadlineColor
+     * @param disabledTrailingContentColor
+     */
+    @Composable
+    fun colors(
+        containerColor: Color = ListTokens.ContainerColor,
+        leadingContentColor: Color = ListTokens.LeadingContentColor,
+        headlineColor: Color = ListTokens.HeadlineColor,
+        supportingTextColor: Color = ListTokens.SupportingTextColor,
+        trailingContentColor: Color = ListTokens.TrailingContentColor,
+        disabledLeadingContentColor: Color = ListTokens.DisabledLeadingContentColor,
+        disabledHeadlineColor: Color = ListTokens.DisabledHeadlineColor,
+        disabledTrailingContentColor: Color = ListTokens.DisabledTrailingContentColor
+    ): PixelyListItemColors = PixelyListItemColors(
+            containerColor,
+            leadingContentColor,
+            headlineColor,
+            supportingTextColor,
+            trailingContentColor,
+            disabledHeadlineColor,
+            disabledLeadingContentColor,
+            disabledTrailingContentColor
+        )
 }
 
-// Component related values
-private val ComponentPadding: Dp = 10.dp
+@Immutable
+class PixelyListItemColors internal constructor(
+    private val containerColor: Color,
+    private val leadingContentColor: Color,
+    private val headlineColor: Color,
+    private val supportingTextColor: Color,
+    private val trailingContentColor: Color,
+    private val disabledHeadlineColor: Color,
+    private val disabledLeadingContentColor: Color,
+    private val disabledTrailingContentColor: Color
+) {
+    @Composable
+    internal fun containerColor(): State<Color> {
+        return rememberUpdatedState(containerColor)
+    }
 
-// Container/Row related values
-private val OneLineMinHeight: Dp = 60.dp
-private val TwoLineMinHeight: Dp = 80.dp
+    @Composable
+    internal fun leadingContentColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(
+            if (enabled) leadingContentColor else disabledLeadingContentColor
+        )
+    }
 
-// Text related values
-private val LargeHeadlineTopPadding: Dp = 6.dp
-private val MediumHeadlineTopPadding: Dp = 9.dp
-private val SupportingTextBottomPadding: Dp = 5.dp
+    @Composable
+    internal fun headlineColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(
+            if (enabled) headlineColor else disabledHeadlineColor
+        )
+    }
 
-private val OneLineTextVerticalPadding: Dp = 10.dp
+    @Composable
+    internal fun supportingTextColor(): State<Color> {
+        return rememberUpdatedState(supportingTextColor)
+    }
 
-private val OnlyTextHorizontalPadding: Dp = 15.dp
-
-// Leading and trailing content related values
-private val ContentMinHeight: Dp = 60.dp
-private val ContentMinWidth: Dp = 52.dp
-
-private val ContentMaxHeight: Dp = 60.dp
-private val ContentMaxWidth: Dp = 110.dp
+    @Composable
+    internal fun trailingContentColor(enabled: Boolean): State<Color> {
+        return rememberUpdatedState(
+            if (enabled) trailingContentColor else disabledTrailingContentColor
+        )
+    }
+}
