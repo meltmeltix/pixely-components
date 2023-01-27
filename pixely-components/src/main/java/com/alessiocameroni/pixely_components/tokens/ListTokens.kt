@@ -49,4 +49,6 @@ internal object ListTokens {
     val ContentMinWidth: Dp = 52.dp
     val ContentMaxHeight: Dp = 60.dp
     val ContentMaxWidth: Dp = 110.dp
+
+    val ContentNoPadding: Dp = 0.dp
 }

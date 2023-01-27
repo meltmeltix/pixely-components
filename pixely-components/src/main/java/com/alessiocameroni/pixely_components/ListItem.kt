@@ -11,8 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.alessiocameroni.pixely_components.tokens.ListTokens
 
 /**
@@ -22,6 +20,7 @@ import com.alessiocameroni.pixely_components.tokens.ListTokens
  * You overall style, with more spaced out elements.
  *
  * @param modifier to be applied to the List Item container
+ * @param enabled toggles enabled and disabled state
  * @param headlineTextString the Headline text of the List Item
  * @param largeHeadline toggles large or medium text style applied to the Headline text
  * @param maxHeadlineLines number of maximum lines applied to the Headline text
@@ -29,6 +28,8 @@ import com.alessiocameroni.pixely_components.tokens.ListTokens
  * @param maxSupportingLines number of maximum lines applied to the Supporting text
  * @param leadingContent leading content on the left of the text column
  * @param trailingContent trailing content on the right of the text column
+ * @param colors [PixelyListItemColors] that will be used to resolve the background and content color
+ * of the item in different states
  */
 @Composable
 fun PixelyListItem(
@@ -379,8 +380,8 @@ private fun SupportingText(
 
 @Composable
 private fun SideContent(
-    startPadding: Dp = 0.dp,
-    endPadding: Dp = 0.dp,
+    startPadding: Dp = ListTokens.ContentNoPadding,
+    endPadding: Dp = ListTokens.ContentNoPadding,
     topAlign: Boolean,
     content: @Composable (() -> Unit),
     color: Color = PixelyListItemDefaults.contentColor
@@ -437,14 +438,17 @@ object PixelyListItemDefaults {
     /**
      * ### Pixely List Item Colors
      *
-     * @param containerColor
-     * @param leadingContentColor
-     * @param headlineColor
-     * @param supportingTextColor
-     * @param trailingContentColor
-     * @param disabledLeadingContentColor
-     * @param disabledHeadlineColor
-     * @param disabledTrailingContentColor
+     * @param containerColor the container color applied to the List Item
+     * @param leadingContentColor the color applied to the Leading Content
+     * @param headlineColor the color applied to the Headline Text
+     * @param supportingTextColor the color applied to the Supporting Text
+     * @param trailingContentColor the color applied to the Trailing Content
+     * @param disabledLeadingContentColor the color applied to the Leading Content when the List Item
+     * is disabled
+     * @param disabledHeadlineColor the color applied to the Headline Text when the List Item is
+     * disabled
+     * @param disabledTrailingContentColor the color applied to the Trailing Content when the List
+     * Item is disabled
      */
     @Composable
     fun colors(
