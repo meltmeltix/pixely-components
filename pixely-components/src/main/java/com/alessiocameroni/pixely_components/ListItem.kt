@@ -332,8 +332,8 @@ private fun HeadlineText(
         Text(
             text = text,
             modifier = paddingModifier,
-            style = MaterialTheme.typography.titleLarge,
-            fontSize = 20.sp,
+            style = ListTokens.LargeHeadlineTextStyle,
+            fontSize = ListTokens.LargeHeadlineTextSize,
             color = color,
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis
@@ -342,7 +342,7 @@ private fun HeadlineText(
         Text(
             text = text,
             modifier = paddingModifier,
-            style = MaterialTheme.typography.titleMedium,
+            style = ListTokens.MediumHeadlineTextStyle,
             color = color,
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis
@@ -360,8 +360,8 @@ private fun SupportingText(
         Text(
             text = text,
             modifier = Modifier.padding(bottom = ListTokens.SupportingTextBottomPadding),
-            style = MaterialTheme.typography.bodyMedium,
-            fontSize = 14.sp,
+            style = ListTokens.SupportingTextStyle,
+            fontSize = ListTokens.SupportingTextSize,
             color = color,
             maxLines = maxLines,
             overflow = TextOverflow.Ellipsis
@@ -370,8 +370,8 @@ private fun SupportingText(
         Text(
             text = text,
             modifier = Modifier.padding(bottom = ListTokens.SupportingTextBottomPadding),
-            style = MaterialTheme.typography.bodyMedium,
-            fontSize = 14.sp,
+            style = ListTokens.SupportingTextStyle,
+            fontSize = ListTokens.SupportingTextSize,
             color = color
         )
     }

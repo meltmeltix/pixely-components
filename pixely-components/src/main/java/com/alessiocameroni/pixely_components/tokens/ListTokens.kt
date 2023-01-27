@@ -3,8 +3,11 @@ package com.alessiocameroni.pixely_components.tokens
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 internal object ListTokens {
     // Component related values
@@ -28,6 +31,12 @@ internal object ListTokens {
     val SupportingTextBottomPadding: Dp = 5.dp
     val OneLineTextVerticalPadding: Dp = 10.dp
     val OnlyTextHorizontalPadding: Dp = 15.dp
+
+    val LargeHeadlineTextStyle: TextStyle @Composable get() = MaterialTheme.typography.titleLarge
+    val LargeHeadlineTextSize: TextUnit = 20.sp
+    val MediumHeadlineTextStyle: TextStyle @Composable get() = MaterialTheme.typography.titleMedium
+    val SupportingTextStyle: TextStyle @Composable get() = MaterialTheme.typography.bodyMedium
+    val SupportingTextSize: TextUnit = 14.sp
 
 
     // Leading and trailing content related values
