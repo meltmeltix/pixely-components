@@ -64,7 +64,7 @@ fun PixelyListItem(
 
                 Column(
                     modifier = Modifier
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -96,7 +96,7 @@ fun PixelyListItem(
                 Column(
                     modifier = Modifier
                         .padding(end = ListTokens.OnlyTextHorizontalPadding)
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -114,7 +114,7 @@ fun PixelyListItem(
                 Column(
                     modifier = Modifier
                         .padding(start = ListTokens.OnlyTextHorizontalPadding)
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -139,7 +139,7 @@ fun PixelyListItem(
                 Column(
                     modifier = Modifier
                         .padding(horizontal = ListTokens.OnlyTextHorizontalPadding)
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight),
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -173,7 +173,7 @@ fun PixelyListItem(
 
                 Column(
                     modifier = Modifier
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
@@ -210,7 +210,7 @@ fun PixelyListItem(
                 Column(
                     modifier = Modifier
                         .padding(end = ListTokens.OnlyTextHorizontalPadding)
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
@@ -233,7 +233,7 @@ fun PixelyListItem(
                 Column(
                     modifier = Modifier
                         .padding(start = ListTokens.OnlyTextHorizontalPadding)
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(
@@ -263,7 +263,7 @@ fun PixelyListItem(
                 Column(
                     modifier = Modifier
                         .padding(horizontal = ListTokens.OnlyTextHorizontalPadding)
-                        .weight(1f)
+                        .weight(ListTokens.TextColumnWeight)
                         .heightIn(min = ListTokens.OneLineMinHeight)
                 ) {
                     HeadlineText(

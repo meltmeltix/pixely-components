@@ -32,6 +32,8 @@ internal object ListTokens {
     val OneLineTextVerticalPadding: Dp = 10.dp
     val OnlyTextHorizontalPadding: Dp = 15.dp
 
+    const val TextColumnWeight: Float = 1f
+
     val LargeHeadlineTextStyle: TextStyle @Composable get() = MaterialTheme.typography.titleLarge
     val LargeHeadlineTextSize: TextUnit = 20.sp
     val MediumHeadlineTextStyle: TextStyle @Composable get() = MaterialTheme.typography.titleMedium

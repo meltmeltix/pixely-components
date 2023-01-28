@@ -6,12 +6,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.alessiocameroni.pixely_components.tokens.SupportInfoTokens
 
 /**
  * ### Pixely Support Info Text
@@ -23,39 +23,43 @@ import androidx.compose.ui.unit.sp
  * @param stringText the body text of the Support Info Text
  * @param painterInfoIcon the painter of the Info Icon
  * @param descriptionInfoIcon the accessibility description of the Info Icon
+ * @param colors [PixelySupportInfoTextColors] that will be used to resolve the background and
+ * content color of the item in different stated
  */
 @Composable
 fun PixelySupportInfoText(
     modifier: Modifier,
     stringText: String,
     painterInfoIcon: Painter? = null,
-    descriptionInfoIcon: String? = null
+    descriptionInfoIcon: String? = null,
+    colors: PixelySupportInfoTextColors = PixelySupportInfoTextDefaults.colors()
 ) {
     SupportInfoTextContainer(
         modifier = modifier,
-        containerColor = PixelySupportInfoTextDefaults.ContainerColor,
-        contentColor = PixelySupportInfoTextDefaults.ContentColor,
+        containerColor = colors.containerColor().value,
+        contentColor = colors.textColor().value,
         paddingValues = PaddingValues(
-            horizontal = HorizontalColumnPadding,
-            vertical = VerticalColumnPadding
+            horizontal = SupportInfoTokens.HorizontalColumnPadding,
+            vertical = SupportInfoTokens.VerticalColumnPadding
         )
     ) {
         Column(
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(SupportInfoTokens.TextColumnWeight)
         ) {
             if (painterInfoIcon != null) {
                 Icon(
-                    modifier = Modifier
-                        .padding(bottom = BottomIconPadding),
+                    modifier = Modifier.padding(bottom = SupportInfoTokens.BottomIconPadding),
                     painter = painterInfoIcon,
-                    contentDescription = descriptionInfoIcon
+                    contentDescription = descriptionInfoIcon,
+                    tint = colors.overlineIconColor().value
                 )
             }
 
             Text(
                 text = stringText,
-                style = MaterialTheme.typography.bodyMedium,
-                fontSize = 14.sp
+                color = colors.textColor().value,
+                style = SupportInfoTokens.TextStyle,
+                fontSize = SupportInfoTokens.TextSize
             )
         }
     }
@@ -64,8 +68,8 @@ fun PixelySupportInfoText(
 @Composable
 private fun SupportInfoTextContainer(
     modifier: Modifier,
-    containerColor: Color,
-    contentColor: Color,
+    containerColor: Color = PixelySupportInfoTextDefaults.containerColor,
+    contentColor: Color = PixelySupportInfoTextDefaults.contentColor,
     paddingValues: PaddingValues,
     content: @Composable RowScope.() -> Unit
 ) {
@@ -83,14 +87,52 @@ private fun SupportInfoTextContainer(
 }
 
 object PixelySupportInfoTextDefaults {
-    val ContainerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
-    val ContentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
-    val ContentSecondaryColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+    /**
+     * The default container color value
+     */
+    val containerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+
+    /**
+     * The default content color value
+     */
+    val contentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+
+    /**
+     * ## Pixely Support Info Text colors
+     *
+     * @param containerColor the container color applied to the Support Info Text
+     * @param overlineIconColor the color applied to the Icon over the text
+     * @param textColor the color applied to the Text
+     */
+    @Composable
+    fun colors(
+        containerColor: Color = SupportInfoTokens.ContainerColor,
+        overlineIconColor: Color = SupportInfoTokens.OverlineIconColor,
+        textColor: Color = SupportInfoTokens.TextColor
+    ): PixelySupportInfoTextColors = PixelySupportInfoTextColors(
+        containerColor,
+        overlineIconColor,
+        textColor,
+    )
 }
 
-// Column related values
-private val HorizontalColumnPadding: Dp = 20.dp
-private val VerticalColumnPadding: Dp = 10.dp
+class PixelySupportInfoTextColors internal constructor(
+    private val containerColor: Color,
+    private val overlineIconColor: Color,
+    private val textColor: Color,
+) {
+    @Composable
+    internal fun containerColor(): State<Color> {
+        return rememberUpdatedState(containerColor)
+    }
 
-// Icon related values
-private val BottomIconPadding: Dp = 20.dp
+    @Composable
+    internal fun overlineIconColor(): State<Color> {
+        return rememberUpdatedState(overlineIconColor)
+    }
+
+    @Composable
+    internal fun textColor(): State<Color> {
+        return rememberUpdatedState(textColor)
+    }
+}
