@@ -2,7 +2,6 @@ package com.alessiocameroni.pixely_components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -423,17 +422,17 @@ object PixelyListItemDefaults {
     /**
      * The default container color value
      */
-    val containerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+    val containerColor: Color @Composable get() = ListTokens.ContainerColor
 
     /**
      * The default content color value
      */
-    val contentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+    val contentColor: Color @Composable get() = ListTokens.HeadlineColor
 
     /**
      * The default secondary content color value
      */
-    val contentSecondaryColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
+    val contentSecondaryColor: Color @Composable get() = ListTokens.SupportingTextColor
 
     /**
      * ### Pixely List Item Colors

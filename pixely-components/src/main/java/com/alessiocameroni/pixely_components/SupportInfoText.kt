@@ -2,7 +2,6 @@ package com.alessiocameroni.pixely_components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,7 +23,7 @@ import com.alessiocameroni.pixely_components.tokens.SupportInfoTokens
  * @param painterInfoIcon the painter of the Info Icon
  * @param descriptionInfoIcon the accessibility description of the Info Icon
  * @param colors [PixelySupportInfoTextColors] that will be used to resolve the background and
- * content color of the item in different stated
+ * content color of the item in different states
  */
 @Composable
 fun PixelySupportInfoText(
@@ -90,12 +89,12 @@ object PixelySupportInfoTextDefaults {
     /**
      * The default container color value
      */
-    val containerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+    val containerColor: Color @Composable get() = SupportInfoTokens.ContainerColor
 
     /**
      * The default content color value
      */
-    val contentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+    val contentColor: Color @Composable get() = SupportInfoTokens.TextColor
 
     /**
      * ## Pixely Support Info Text colors

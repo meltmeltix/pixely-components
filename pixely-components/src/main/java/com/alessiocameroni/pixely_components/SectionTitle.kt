@@ -1,14 +1,19 @@
 package com.alessiocameroni.pixely_components
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
+import com.alessiocameroni.pixely_components.tokens.SectionTitleTokens
 
 /**
  * ### Pixely Section Title
@@ -18,30 +23,89 @@ import androidx.compose.ui.unit.dp
  *
  * @param modifier to be applied to the Section Title container
  * @param stringTitle the title text of the Section Title
+ * @param colors [PixelySectionTitleColors] that will be used to resolve the background and
+ * content color of the item in different states
  */
 @Composable
 fun PixelySectionTitle(
     modifier: Modifier,
     stringTitle: String,
+    colors: PixelySectionTitleColors = PixelySectionTitleDefaults.colors()
 ) {
-    Row(modifier = modifier) {
+    SectionTitleContainer(
+        modifier = modifier,
+        containerColor = colors.containerColor().value,
+        contentColor = colors.textColor().value,
+        paddingValues = PaddingValues(
+            start = SectionTitleTokens.HorizontalContainerPadding,
+            top = SectionTitleTokens.TopContainerPadding,
+            end = SectionTitleTokens.HorizontalContainerPadding,
+            bottom = SectionTitleTokens.BottomContainerPadding
+        )
+    ) {
         Text(
-            modifier = Modifier
-                .padding(horizontal = UpperTextPadding)
-                .padding(
-                    top = UpperTextPadding,
-                    bottom = BottomTextPadding
-                )
-                .weight(1f),
-            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.weight(SectionTitleTokens.TextWeight),
+            color = colors.textColor().value,
             text = stringTitle,
-            style = MaterialTheme.typography.bodyMedium,
+            style = SectionTitleTokens.TextStyle,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
 
-// Text related values
-private val UpperTextPadding: Dp = 25.dp
-private val BottomTextPadding: Dp = 5.dp
+@Composable
+fun SectionTitleContainer(
+    modifier: Modifier,
+    containerColor: Color = PixelySectionTitleDefaults.containerColor,
+    contentColor: Color = PixelySectionTitleDefaults.contentColor,
+    paddingValues: PaddingValues,
+    content: @Composable RowScope.() -> Unit
+) {
+    Surface(
+        modifier = modifier,
+        color = containerColor,
+        contentColor = contentColor
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(paddingValues)
+        ) { content() }
+    }
+}
+
+object PixelySectionTitleDefaults {
+    /**
+     * The default container color value
+     */
+    val containerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+
+    /**
+     * The default content color value
+     */
+    val contentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+
+    @Composable
+    fun colors(
+        containerColor: Color = SectionTitleTokens.ContainerColor,
+        textColor: Color = SectionTitleTokens.TextColor,
+    ): PixelySectionTitleColors = PixelySectionTitleColors(
+        containerColor = containerColor,
+        textColor = textColor
+    )
+}
+
+class PixelySectionTitleColors internal constructor(
+    private val containerColor: Color,
+    private val textColor: Color,
+) {
+    @Composable
+    internal fun containerColor(): State<Color> {
+        return rememberUpdatedState(containerColor)
+    }
+
+    @Composable
+    internal fun textColor(): State<Color> {
+        return rememberUpdatedState(textColor)
+    }
+}
