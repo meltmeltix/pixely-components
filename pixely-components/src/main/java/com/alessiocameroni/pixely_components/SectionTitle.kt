@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -78,13 +77,18 @@ object PixelySectionTitleDefaults {
     /**
      * The default container color value
      */
-    val containerColor: Color @Composable get() = MaterialTheme.colorScheme.surface
+    val containerColor: Color @Composable get() = SectionTitleTokens.ContainerColor
 
     /**
      * The default content color value
      */
-    val contentColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+    val contentColor: Color @Composable get() = SectionTitleTokens.TextColor
 
+    /**
+     * ### Pixely Section Title Colors
+     * @param containerColor the container color applied to the Section title
+     * @param textColor the text color applied to the Section title
+     */
     @Composable
     fun colors(
         containerColor: Color = SectionTitleTokens.ContainerColor,

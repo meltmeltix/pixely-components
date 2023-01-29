@@ -42,9 +42,7 @@ fun PixelySupportInfoText(
             vertical = SupportInfoTokens.VerticalColumnPadding
         )
     ) {
-        Column(
-            modifier = Modifier.weight(SupportInfoTokens.TextColumnWeight)
-        ) {
+        Column(modifier = Modifier.weight(SupportInfoTokens.TextColumnWeight)) {
             if (painterInfoIcon != null) {
                 Icon(
                     modifier = Modifier.padding(bottom = SupportInfoTokens.BottomIconPadding),
