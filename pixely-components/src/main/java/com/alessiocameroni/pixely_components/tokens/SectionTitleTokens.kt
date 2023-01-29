@@ -17,7 +17,7 @@ object SectionTitleTokens {
 
 
     // Text related values
-    val TextColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
+    val TextColor: Color @Composable get() = MaterialTheme.colorScheme.primary
 
     const val TextWeight: Float = 1f
 
