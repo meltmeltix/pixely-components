@@ -39,7 +39,7 @@ android {
 
 dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.1.0-alpha04'
+    implementation 'androidx.compose.material3:material3:1.1.0-alpha05'
 }
 
 afterEvaluate {
@@ -48,9 +48,9 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.alessiocameroni'
+                groupId = 'com.alessiocameroni'
                 artifactId = 'pixely-components'
-                version = '2.0.0'
+                version = '2.0.1'
             }
         }
     }
