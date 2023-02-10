@@ -26,7 +26,7 @@ import com.alessiocameroni.pixely_components.tokens.SegmentedColumnTokens
  */
 @Composable
 fun PixelySegmentedColumn(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     colors: PixelySegmentedColumnColors = PixelySegmentedColumnDefaults.colors(),
     content: @Composable ColumnScope.() -> Unit,
 ) {

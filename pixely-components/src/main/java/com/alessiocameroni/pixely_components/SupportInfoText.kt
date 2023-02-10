@@ -27,7 +27,7 @@ import com.alessiocameroni.pixely_components.tokens.SupportInfoTokens
  */
 @Composable
 fun PixelySupportInfoText(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     stringText: String,
     painterInfoIcon: Painter? = null,
     descriptionInfoIcon: String? = null,

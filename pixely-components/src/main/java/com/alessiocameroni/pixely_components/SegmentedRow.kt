@@ -27,7 +27,7 @@ import com.alessiocameroni.pixely_components.tokens.SegmentedRowTokens
  */
 @Composable
 fun PixelySegmentedRow(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     colors: PixelySegmentedRowColors = PixelySegmentedRowDefaults.colors(),
     content: @Composable RowScope.() -> Unit
 ) {

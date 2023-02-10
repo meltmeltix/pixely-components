@@ -27,7 +27,7 @@ import com.alessiocameroni.pixely_components.tokens.SectionTitleTokens
  */
 @Composable
 fun PixelySectionTitle(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     stringTitle: String,
     colors: PixelySectionTitleColors = PixelySectionTitleDefaults.colors()
 ) {

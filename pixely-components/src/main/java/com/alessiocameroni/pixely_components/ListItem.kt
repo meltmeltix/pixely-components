@@ -32,7 +32,7 @@ import com.alessiocameroni.pixely_components.tokens.ListTokens
  */
 @Composable
 fun PixelyListItem(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     enabled: Boolean = true,
     headlineTextString: String,
     largeHeadline: Boolean = true,

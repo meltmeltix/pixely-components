@@ -24,7 +24,7 @@ import com.alessiocameroni.pixely_components.tokens.DropDownMenuTitleTokens
  */
 @Composable
 fun PixelyDropdownMenuTitle(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     stringTitle: String,
     colors: PixelyDropDownMenuTitleColors = PixelyDropDownMenuTitleDefaults.colors()
 ) {
