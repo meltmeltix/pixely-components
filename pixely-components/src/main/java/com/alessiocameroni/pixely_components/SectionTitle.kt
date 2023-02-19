@@ -54,7 +54,7 @@ fun PixelySectionTitle(
 }
 
 @Composable
-fun SectionTitleContainer(
+private fun SectionTitleContainer(
     modifier: Modifier,
     containerColor: Color = PixelySectionTitleDefaults.containerColor,
     contentColor: Color = PixelySectionTitleDefaults.contentColor,
