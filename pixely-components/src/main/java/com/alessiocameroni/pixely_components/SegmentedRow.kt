@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import com.alessiocameroni.pixely_components.tokens.SegmentedColumnTokens
 import com.alessiocameroni.pixely_components.tokens.SegmentedRowTokens
 
 /**
@@ -60,12 +59,12 @@ object PixelySegmentedRowDefaults {
     /**
      * The default container color value
      */
-    val containerColor: Color @Composable get() = SegmentedColumnTokens.ColumnColor
+    val containerColor: Color @Composable get() = SegmentedRowTokens.RowColor
 
     /**
      * The default container shape
      */
-    val Shape: Shape @Composable get() = SegmentedColumnTokens.ColumnShape
+    val Shape: Shape @Composable get() = SegmentedRowTokens.RowShape
 
     /**
      * ### Pixely Segmented Row Colors
