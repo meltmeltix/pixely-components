@@ -1,6 +1,7 @@
 package com.alessiocameroni.pixely_components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Divider
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -10,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.alessiocameroni.pixely_components.tokens.ListTokens
 
 /**
@@ -26,7 +28,9 @@ import com.alessiocameroni.pixely_components.tokens.ListTokens
  * @param supportingTextString the Supporting text of the list item, below the Headline text
  * @param maxSupportingLines number of maximum lines applied to the Supporting text
  * @param leadingContent leading content on the left of the text column
+ * @param leadingContentDivider toggles visibility of divider on the right side of the leading unit
  * @param trailingContent trailing content on the right of the text column
+ * @param trailingContentDivider toggles visibility of divider on the left side of the trailing unit
  * @param colors [PixelyListItemColors] that will be used to resolve the background and content color
  * of the item in different states
  */
@@ -40,7 +44,9 @@ fun PixelyListItem(
     supportingTextString: String? = null,
     maxSupportingLines: Int = 0,
     leadingContent: @Composable (() -> Unit)? = null,
+    leadingContentDivider: Boolean = false,
     trailingContent: @Composable (() -> Unit)? = null,
+    trailingContentDivider: Boolean = false,
     colors: PixelyListItemColors = PixelyListItemDefaults.colors()
 ) {
     if (supportingTextString == null) {
@@ -61,6 +67,13 @@ fun PixelyListItem(
                     color = colors.leadingContentColor(enabled = enabled).value
                 )
 
+                ContentDivider(
+                    state = leadingContentDivider,
+                    padding = PaddingValues(
+                        end = ListTokens.ComponentPadding
+                    )
+                )
+
                 Column(
                     modifier = Modifier
                         .weight(ListTokens.TextColumnWeight)
@@ -76,6 +89,13 @@ fun PixelyListItem(
                     )
                 }
 
+                ContentDivider(
+                    state = trailingContentDivider,
+                    padding = PaddingValues(
+                        start = ListTokens.ComponentPadding
+                    )
+                )
+
                 SideContent(
                     startPadding = ListTokens.ComponentPadding,
                     topAlign = true,
@@ -90,6 +110,13 @@ fun PixelyListItem(
                     topAlign = true,
                     content = { leadingContent() },
                     color = colors.leadingContentColor(enabled = enabled).value
+                )
+
+                ContentDivider(
+                    state = leadingContentDivider,
+                    padding = PaddingValues(
+                        end = ListTokens.ComponentPadding
+                    )
                 )
 
                 Column(
@@ -125,6 +152,13 @@ fun PixelyListItem(
                         maxLines = maxHeadlineLines
                     )
                 }
+
+                ContentDivider(
+                    state = trailingContentDivider,
+                    padding = PaddingValues(
+                        start = ListTokens.ComponentPadding
+                    )
+                )
 
                 SideContent(
                     startPadding = ListTokens.ComponentPadding,
@@ -170,6 +204,13 @@ fun PixelyListItem(
                     color = colors.leadingContentColor(enabled = enabled).value
                 )
 
+                ContentDivider(
+                    state = leadingContentDivider,
+                    padding = PaddingValues(
+                        end = ListTokens.ComponentPadding
+                    )
+                )
+
                 Column(
                     modifier = Modifier
                         .weight(ListTokens.TextColumnWeight)
@@ -190,6 +231,13 @@ fun PixelyListItem(
                     )
                 }
 
+                ContentDivider(
+                    state = trailingContentDivider,
+                    padding = PaddingValues(
+                        start = ListTokens.ComponentPadding
+                    )
+                )
+
                 SideContent(
                     startPadding = ListTokens.ComponentPadding,
                     topAlign = true,
@@ -204,6 +252,13 @@ fun PixelyListItem(
                     topAlign = true,
                     content = { leadingContent() },
                     color = colors.leadingContentColor(enabled = enabled).value
+                )
+
+                ContentDivider(
+                    state = leadingContentDivider,
+                    padding = PaddingValues(
+                        end = ListTokens.ComponentPadding
+                    )
                 )
 
                 Column(
@@ -249,6 +304,13 @@ fun PixelyListItem(
                         maxLines = maxSupportingLines
                     )
                 }
+
+                ContentDivider(
+                    state = trailingContentDivider,
+                    padding = PaddingValues(
+                        start = ListTokens.ComponentPadding
+                    )
+                )
 
                 SideContent(
                     startPadding = ListTokens.ComponentPadding,
@@ -415,6 +477,22 @@ private fun SideContent(
                 contentAlignment = Alignment.Center
             ) { content() }
         }
+    }
+}
+
+@Composable
+private fun ContentDivider(
+    state: Boolean,
+    padding: PaddingValues
+) {
+    if(state) {
+        Divider(
+            modifier = Modifier
+                .padding(padding)
+                .fillMaxHeight()
+                .width(1.dp)
+                .padding(vertical = 10.dp)
+        )
     }
 }
 
