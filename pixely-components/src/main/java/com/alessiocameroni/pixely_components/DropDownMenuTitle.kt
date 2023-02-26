@@ -1,6 +1,5 @@
 package com.alessiocameroni.pixely_components
 
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,7 +27,7 @@ fun PixelyDropdownMenuTitle(
     stringTitle: String,
     colors: PixelyDropDownMenuTitleColors = PixelyDropDownMenuTitleDefaults.colors()
 ) {
-    dropDownMenuTitleContainer(
+    DropDownMenuTitleContainer(
         modifier = modifier,
         containerColor = colors.containerColor().value,
         contentColor = colors.textColor().value,
@@ -37,28 +36,26 @@ fun PixelyDropdownMenuTitle(
 }
 
 @Composable
-private fun dropDownMenuTitleContainer(
+private fun DropDownMenuTitleContainer(
     modifier: Modifier,
     containerColor: Color = PixelyDropDownMenuTitleDefaults.containerColor,
     contentColor: Color = PixelyDropDownMenuTitleDefaults.contentColor,
     stringTitle: String
-): @Composable ColumnScope.() -> Unit {
-    return {
-        Surface(
-            modifier = modifier,
-            color = containerColor,
-            contentColor = contentColor
-        ) {
-            Text(
-                modifier = Modifier
-                    .padding(
-                        horizontal = DropDownMenuTitleTokens.TextHorizontalPadding,
-                        vertical = DropDownMenuTitleTokens.TextVerticalPadding
-                    ),
-                text = stringTitle,
-                style = DropDownMenuTitleTokens.TextStyle
-            )
-        }
+) {
+    Surface(
+        modifier = modifier,
+        color = containerColor,
+        contentColor = contentColor
+    ) {
+        Text(
+            modifier = Modifier
+                .padding(
+                    horizontal = DropDownMenuTitleTokens.TextHorizontalPadding,
+                    vertical = DropDownMenuTitleTokens.TextVerticalPadding
+                ),
+            text = stringTitle,
+            style = DropDownMenuTitleTokens.TextStyle
+        )
     }
 }
 
