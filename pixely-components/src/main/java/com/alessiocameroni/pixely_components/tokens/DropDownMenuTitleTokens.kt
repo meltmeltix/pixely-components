@@ -16,6 +16,7 @@ object DropDownMenuTitleTokens {
     val TextColor: Color @Composable get() = MaterialTheme.colorScheme.onSurface
 
     val TextHorizontalPadding: Dp = 12.dp
+    val TextTopPadding: Dp = 13.dp
     val TextVerticalPadding: Dp = 8.dp
 
     val TextStyle: TextStyle @Composable get() = MaterialTheme.typography.labelLarge

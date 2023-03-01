@@ -50,8 +50,10 @@ private fun DropDownMenuTitleContainer(
         Text(
             modifier = Modifier
                 .padding(
-                    horizontal = DropDownMenuTitleTokens.TextHorizontalPadding,
-                    vertical = DropDownMenuTitleTokens.TextVerticalPadding
+                    start = DropDownMenuTitleTokens.TextHorizontalPadding,
+                    top = DropDownMenuTitleTokens.TextTopPadding,
+                    end = DropDownMenuTitleTokens.TextHorizontalPadding,
+                    bottom = DropDownMenuTitleTokens.TextVerticalPadding
                 ),
             text = stringTitle,
             style = DropDownMenuTitleTokens.TextStyle

@@ -9,9 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import com.alessiocameroni.pixely_components.tokens.SectionTitleTokens
 
 /**
@@ -29,27 +31,58 @@ import com.alessiocameroni.pixely_components.tokens.SectionTitleTokens
 fun PixelySectionTitle(
     modifier: Modifier = Modifier,
     stringTitle: String,
+    trailingUnit: @Composable (() -> Unit)? = null,
+    horizontalContentPadding: Dp = SectionTitleTokens.HorizontalContainerPadding,
     colors: PixelySectionTitleColors = PixelySectionTitleDefaults.colors()
 ) {
-    SectionTitleContainer(
-        modifier = modifier,
-        containerColor = colors.containerColor().value,
-        contentColor = colors.textColor().value,
-        paddingValues = PaddingValues(
-            start = SectionTitleTokens.HorizontalContainerPadding,
-            top = SectionTitleTokens.TopContainerPadding,
-            end = SectionTitleTokens.HorizontalContainerPadding,
-            bottom = SectionTitleTokens.BottomContainerPadding
-        )
-    ) {
-        Text(
-            modifier = Modifier.weight(SectionTitleTokens.TextWeight),
-            color = colors.textColor().value,
-            text = stringTitle,
-            style = SectionTitleTokens.TextStyle,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-        )
+    if (trailingUnit != null) {
+        SectionTitleContainer(
+            modifier = modifier,
+            containerColor = colors.containerColor().value,
+            contentColor = colors.textColor().value,
+            centerAlign = true,
+            paddingValues = PaddingValues(
+                start = horizontalContentPadding,
+                top = SectionTitleTokens.TopContainerUnitPadding,
+                end = horizontalContentPadding,
+                bottom = SectionTitleTokens.BottomContainerUnitPadding
+            )
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(end = SectionTitleTokens.TextEndPadding)
+                    .weight(SectionTitleTokens.TextWeight),
+                color = colors.textColor().value,
+                text = stringTitle,
+                style = SectionTitleTokens.TextStyle,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            trailingUnit()
+        }
+    } else {
+        SectionTitleContainer(
+            modifier = modifier,
+            containerColor = colors.containerColor().value,
+            contentColor = colors.textColor().value,
+            centerAlign = false,
+            paddingValues = PaddingValues(
+                start = horizontalContentPadding,
+                top = SectionTitleTokens.TopContainerPadding,
+                end = horizontalContentPadding,
+                bottom = SectionTitleTokens.BottomContainerPadding
+            ),
+        ) {
+            Text(
+                modifier = Modifier.weight(SectionTitleTokens.TextWeight),
+                color = colors.textColor().value,
+                text = stringTitle,
+                style = SectionTitleTokens.TextStyle,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
     }
 }
 
@@ -59,17 +92,22 @@ private fun SectionTitleContainer(
     containerColor: Color = PixelySectionTitleDefaults.containerColor,
     contentColor: Color = PixelySectionTitleDefaults.contentColor,
     paddingValues: PaddingValues,
-    content: @Composable RowScope.() -> Unit
+    centerAlign: Boolean,
+    content: @Composable (RowScope.() -> Unit),
 ) {
     Surface(
         modifier = modifier,
         color = containerColor,
         contentColor = contentColor
     ) {
-        Row(
-            modifier = Modifier
-                .padding(paddingValues)
-        ) { content() }
+        if (centerAlign) {
+            Row (
+                modifier = Modifier.padding(paddingValues),
+                verticalAlignment = Alignment.CenterVertically
+            ) { content() }
+        } else {
+            Row (modifier = Modifier.padding(paddingValues)) { content() }
+        }
     }
 }
 

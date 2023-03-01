@@ -14,10 +14,14 @@ object SectionTitleTokens {
     val HorizontalContainerPadding: Dp = 25.dp
     val TopContainerPadding: Dp = 25.dp
     val BottomContainerPadding: Dp = 5.dp
+    val TopContainerUnitPadding: Dp = 2.dp
+    val BottomContainerUnitPadding: Dp = 2.dp
 
 
     // Text related values
     val TextColor: Color @Composable get() = MaterialTheme.colorScheme.primary
+
+    val TextEndPadding: Dp = 10.dp
 
     const val TextWeight: Float = 1f
 
