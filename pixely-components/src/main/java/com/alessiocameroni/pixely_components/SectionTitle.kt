@@ -1,9 +1,6 @@
 package com.alessiocameroni.pixely_components
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +21,8 @@ import com.alessiocameroni.pixely_components.tokens.SectionTitleTokens
  *
  * @param modifier to be applied to the Section Title container
  * @param stringTitle the title text of the Section Title
+ * @param trailingUnit trailing content on the right of the title
+ * @param horizontalContentPadding horizontal padding modifier
  * @param colors [PixelySectionTitleColors] that will be used to resolve the background and
  * content color of the item in different states
  */
@@ -59,7 +58,10 @@ fun PixelySectionTitle(
                 overflow = TextOverflow.Ellipsis
             )
 
-            trailingUnit()
+            TrailingUnitContainer(
+                content = { trailingUnit() },
+                contentColor = colors.unitColor().value
+            )
         }
     } else {
         SectionTitleContainer(
@@ -111,6 +113,18 @@ private fun SectionTitleContainer(
     }
 }
 
+@Composable
+private fun TrailingUnitContainer(
+    content: @Composable (() -> Unit),
+    contentColor: Color = PixelySectionTitleDefaults.unitColor
+) {
+    Surface(
+        contentColor = contentColor
+    ) {
+        content()
+    }
+}
+
 object PixelySectionTitleDefaults {
     /**
      * The default container color value
@@ -123,23 +137,32 @@ object PixelySectionTitleDefaults {
     val contentColor: Color @Composable get() = SectionTitleTokens.TextColor
 
     /**
+     * The default unit color value
+     */
+    val unitColor: Color @Composable get() = SectionTitleTokens.UnitColor
+
+    /**
      * ### Pixely Section Title Colors
      * @param containerColor the container color applied to the Section title
      * @param textColor the text color applied to the Section title
+     * @param unitColor the color applied to the trailing Unit
      */
     @Composable
     fun colors(
         containerColor: Color = SectionTitleTokens.ContainerColor,
         textColor: Color = SectionTitleTokens.TextColor,
+        unitColor: Color = SectionTitleTokens.UnitColor
     ): PixelySectionTitleColors = PixelySectionTitleColors(
         containerColor = containerColor,
-        textColor = textColor
+        textColor = textColor,
+        unitColor = unitColor
     )
 }
 
 class PixelySectionTitleColors internal constructor(
     private val containerColor: Color,
     private val textColor: Color,
+    private val unitColor: Color
 ) {
     @Composable
     internal fun containerColor(): State<Color> {
@@ -149,5 +172,10 @@ class PixelySectionTitleColors internal constructor(
     @Composable
     internal fun textColor(): State<Color> {
         return rememberUpdatedState(textColor)
+    }
+
+    @Composable
+    internal fun unitColor(): State<Color> {
+        return rememberUpdatedState(unitColor)
     }
 }

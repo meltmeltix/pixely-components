@@ -26,4 +26,7 @@ object SectionTitleTokens {
     const val TextWeight: Float = 1f
 
     val TextStyle: TextStyle @Composable get() = MaterialTheme.typography.bodyMedium
+
+    // Unit related values
+    val UnitColor: Color @Composable get() = MaterialTheme.colorScheme.onSurfaceVariant
 }
