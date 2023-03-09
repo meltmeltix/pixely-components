@@ -85,10 +85,10 @@ If you want to buy me a coffee you'll make my day. Thank you ❤️
 
 <p align="center">
 	<a href="https://ko-fi.com/meltix">
-		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/kofi.png" height="50"></img>
+		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/kofi.png" height="45"></img>
 	</a>
-	<span width="100">
+	&nbsp; &nbsp;
 	<a href="https://www.paypal.com/donate/?hosted_button_id=HKR9U247TGBQ2">
-		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/paypal.png" height="50"></img>
+		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/paypal.png" height="45"></img>
 	</a>
 </p>
