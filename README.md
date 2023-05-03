@@ -10,7 +10,7 @@
 
 <p align="center">
 	<a href="https://jitpack.io/#alessiocameroni/pixely-components">
-		<img src="https://img.shields.io/badge/Jitpack-2.1.3-green?style=for-the-badge">
+		<img src="https://img.shields.io/badge/Jitpack-2.1.5-green?style=for-the-badge">
 	</a>
 	<a><img src="https://img.shields.io/badge/Jetpack%20Compose-1.4.0--beta02-blue?style=for-the-badge"></a>
 	<a><img src="https://img.shields.io/badge/material3-1.1.0--alpha07-blueviolet?style=for-the-badge"></a>
@@ -52,7 +52,7 @@ repositories {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.alessiocameroni:pixely-components:2.1.3'
+    implementation 'com.github.alessiocameroni:pixely-components:2.1.5'
 }
 ```
 
