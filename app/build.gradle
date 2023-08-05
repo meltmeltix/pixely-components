@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace 'com.alessiocameroni.pixelycomponentslibrary'
-    compileSdk 33
+    namespace 'com.meltix.pixelycomponentslibrary'
+    compileSdk 34
 
     defaultConfig {
-        applicationId 'com.alessiocameroni.pixelycomponentslibrary'
+        applicationId 'com.meltix.pixelycomponentslibrary'
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -47,12 +47,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.activity:activity-compose:1.6.1'
+    implementation 'androidx.activity:activity-compose:1.7.2'
 
-    implementation 'androidx.compose.material3:material3:1.1.0-alpha07'
+    implementation 'androidx.compose.material3:material3:1.2.0-alpha04'
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
 
