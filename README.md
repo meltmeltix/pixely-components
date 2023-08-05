@@ -10,7 +10,7 @@
 
 <p align="center">
 	<a href="https://jitpack.io/#alessiocameroni/pixely-components">
-		<img src="https://img.shields.io/badge/Jitpack-2.1.3-green?style=for-the-badge">
+		<img src="https://img.shields.io/badge/Jitpack-2.1.5-green?style=for-the-badge">
 	</a>
 	<a><img src="https://img.shields.io/badge/Jetpack%20Compose-1.4.0--beta02-blue?style=for-the-badge"></a>
 	<a><img src="https://img.shields.io/badge/material3-1.1.0--alpha07-blueviolet?style=for-the-badge"></a>
@@ -52,7 +52,7 @@ repositories {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.alessiocameroni:pixely-components:2.1.3'
+    implementation 'com.github.alessiocameroni:pixely-components:2.1.5'
 }
 ```
 
@@ -83,4 +83,11 @@ For more convoluted language, see the [LICENSE](https://github.com/alessiocamero
 Pixely Components is a free to use library, where I've put love and attention to detail into it. Making something open source and accessible is at heart.
 If you want to buy me a coffee you'll make my day. Thank you ❤️
 
-[<img style="float:left" src="https://user-images.githubusercontent.com/14358394/115450238-f39e8100-a21b-11eb-89d0-fa4b82cdbce8.png" width="200">](https://ko-fi.com/meltix)
+<p align="center">
+	<a href="https://ko-fi.com/meltix">
+		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/kofi.png" height="45"></img>
+	</a>
+	<a href="https://www.paypal.com/donate/?hosted_button_id=HKR9U247TGBQ2">
+		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/paypal.png" height="45"></img>
+	</a>
+</p>
