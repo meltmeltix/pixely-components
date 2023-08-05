@@ -51,9 +51,9 @@ afterEvaluate {
             release(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.alessiocameroni'
+                groupId = 'com.github.meltmeltix'
                 artifactId = 'pixely-components'
-                version = '2.1.5'
+                version = '3.0.0'
             }
         }
     }
