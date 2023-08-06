@@ -9,11 +9,11 @@
 </p>
 
 <p align="center">
-	<a href="https://jitpack.io/#alessiocameroni/pixely-components">
-		<img src="https://img.shields.io/badge/Jitpack-2.1.5-green?style=for-the-badge">
+	<a href="https://jitpack.io/#meltmeltix/pixely-components">
+		<img src="https://img.shields.io/badge/Jitpack-3.0.0-orange?style=for-the-badge">
 	</a>
-	<a><img src="https://img.shields.io/badge/Jetpack%20Compose-1.4.0--beta02-blue?style=for-the-badge"></a>
-	<a><img src="https://img.shields.io/badge/material3-1.1.0--alpha07-blueviolet?style=for-the-badge"></a>
+	<a><img src="https://img.shields.io/badge/Jetpack%20Compose-1.6.0 alpha02-blue?style=for-the-badge"></a>
+	<a><img src="https://img.shields.io/badge/material3-1.2.0 alpha04-blueviolet?style=for-the-badge"></a>
 </p>
 
 <br>
@@ -41,9 +41,11 @@ All the components listed are currently used in other personal apps, such as [Re
 1. Add the JitPack repository to your `settings.gradle` file
 
 ```gradle
-repositories {
-    ...
-    maven( url = "https://jitpack.io" )
+buildscript {
+    repositories {
+        ...
+        maven( url "https://jitpack.io" )
+    }
 }
 ```
 
@@ -52,7 +54,7 @@ repositories {
 ```gradle
 dependencies {
     ...
-    implementation 'com.github.alessiocameroni:pixely-components:2.1.5'
+    implementation 'com.github.meltmeltix:pixely-components:3.0.0'
 }
 ```
 
@@ -85,9 +87,9 @@ If you want to buy me a coffee you'll make my day. Thank you ❤️
 
 <p align="center">
 	<a href="https://ko-fi.com/meltix">
-		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/kofi.png" height="45"></img>
+		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/kofi.png" height="45"/>
 	</a>
 	<a href="https://www.paypal.com/donate/?hosted_button_id=HKR9U247TGBQ2">
-		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/paypal.png" height="45"></img>
+		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/paypal.png" height="45"/>
 	</a>
 </p>
