@@ -6,6 +6,7 @@ buildscript {
         kotlin_compiler_version = '1.4.2'
     }
     repositories {
+        mavenLocal()
         mavenCentral()
         google()
     }
@@ -19,6 +20,6 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }

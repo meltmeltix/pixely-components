@@ -52,7 +52,7 @@ afterEvaluate {
                 from components.release
 
                 groupId = 'com.github.meltmeltix'
-                artifactId = 'pixely-components'
+                artifactId = 'pixely_components'
                 version = '3.0.0'
             }
         }
