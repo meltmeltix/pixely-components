@@ -11,12 +11,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.Immutable
@@ -502,11 +501,9 @@ private fun ContentDivider(
     padding: PaddingValues
 ) {
     if(state) {
-        HorizontalDivider(
+        VerticalDivider(
             modifier = Modifier
                 .padding(padding)
-                .fillMaxHeight()
-                .width(1.dp)
                 .padding(vertical = 10.dp)
         )
     }
