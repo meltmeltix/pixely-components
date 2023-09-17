@@ -65,11 +65,6 @@ The documentation of each component can be found in [this repository wiki](https
 
 <br>
 
-## 🤝 Contribute
-Any kind of contribution is more than welcome, it would be awesome to expand this library with more components down the line.
-
-<br>
-
 ## 📜 License
 Pixely Components is released under the MIT license, which grants the following permissions:
 - Commercial use
