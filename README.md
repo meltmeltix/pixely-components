@@ -10,7 +10,7 @@
 
 <p align="center">
 	<a href="https://jitpack.io/#meltmeltix/pixely-components">
-		<img src="https://img.shields.io/badge/Jitpack-3.0.0-orange?style=for-the-badge">
+		<img src="https://img.shields.io/badge/Jitpack-3.0.1-orange?style=for-the-badge">
 	</a>
 	<a><img src="https://img.shields.io/badge/Jetpack%20Compose-1.6.0 alpha02-blue?style=for-the-badge"></a>
 	<a><img src="https://img.shields.io/badge/material3-1.2.0 alpha04-blueviolet?style=for-the-badge"></a>
