@@ -1,3 +1,6 @@
+> # This library is no longer supported and it is now deprecated
+> Pretty much almost if not all components have been introduced in the `Material3` Expressive library, as well as those smaller components are way simpler to impelment thanks to the `MaterialTheme` styling. The library will be archived for preservation.
+
 <h3 align="center">
     <img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/Logo.png" width="120" alt="Logo">
 	<br/>
@@ -73,18 +76,3 @@ Pixely Components is released under the MIT license, which grants the following 
 - Private use
 
 For more convoluted language, see the [LICENSE](https://github.com/alessiocameroni/pixely-components/blob/master/LICENSE).
-
-<br>
-
-## 🍵 Support
-Pixely Components is a free to use library, where I've put love and attention to detail into it. Making something open source and accessible is at heart.
-If you want to buy me a coffee you'll make my day. Thank you ❤️
-
-<p align="center">
-	<a href="https://ko-fi.com/meltix">
-		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/kofi.png" height="45"/>
-	</a>
-	<a href="https://www.paypal.com/donate/?hosted_button_id=HKR9U247TGBQ2">
-		<img src="https://raw.githubusercontent.com/alessiocameroni/pixely-components/master/github/Main/paypal.png" height="45"/>
-	</a>
-</p>
